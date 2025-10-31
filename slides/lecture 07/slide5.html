@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How MCP Works: A Simplified Flow</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">How MCP Works: A Simplified Flow</h1>
+
+            <div class="two-panel">
+                <div class="panel slide-in-left">
+                    <img src="images/mcp-flow.png" alt="Model Context Protocol request flow diagram" class="panel-image">
+                </div>
+
+                <div class="panel panel-text slide-in-right">
+                    <ul class="content-list template3-list">
+                        <li>
+                            <strong>Initialization:</strong> The host app starts MCP clients, which perform a handshake with servers to exchange capabilities.
+                        </li>
+                        <li>
+                            <strong>Discovery:</strong> The client requests the list of available Tools, Resources, and Prompts from the server.
+                        </li>
+                        <li>
+                            <strong>Context Provision:</strong> The app displays Resources/Prompts to the user or makes Tools available to the LLM.
+                        </li>
+                        <li>
+                            <strong>Invocation:</strong> The LLM decides to use a Tool and instructs the client to send an invocation request to the server.
+                        </li>
+                        <li>
+                            <strong>Execution & Response:</strong> The server executes the logic (e.g., calls the GitHub API) and sends the result back to the client.
+                        </li>
+                        <li>
+                            <strong>Completion:</strong> The client forwards the result to the LLM, which uses this new external information to generate its final response.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>
+

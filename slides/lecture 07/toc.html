@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Outline - Greenwich Presentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Session Outline</h1>
+            
+            <div class="toc-grid">
+                <div class="toc-item slide-in-left" onclick="goToSlide('slide1.html')">
+                    <div class="toc-number">01</div>
+                    <div class="toc-title-text">Introduction to MCP</div>
+                </div>
+                
+                <div class="toc-item slide-in-left" style="animation-delay: 0.2s;" onclick="goToSlide('slide2.html')">
+                    <div class="toc-number">02</div>
+                    <div class="toc-title-text">MCP Architecture & Core Capabilities</div>
+                </div>
+                
+                <div class="toc-item slide-in-right" onclick="goToSlide('slide6.html')">
+                    <div class="toc-number">03</div>
+                    <div class="toc-title-text">How MCP Works & Advanced Features</div>
+                </div>
+                
+                <div class="toc-item slide-in-right" style="animation-delay: 0.2s;" onclick="goToSlide('slide13.html')">
+                    <div class="toc-number">04</div>
+                    <div class="toc-title-text">Hands-On: Practical MCP</div>
+                </div>
+                
+                <div class="toc-item slide-in-left" style="animation-delay: 0.4s;" onclick="goToSlide('slide14.html')">
+                    <div class="toc-number">05</div>
+                    <div class="toc-title-text">MCP Servers for Developers</div>
+                </div>
+                
+                <div class="toc-item slide-in-right" style="animation-delay: 0.4s;" onclick="goToSlide('slide19.html')">
+                    <div class="toc-number">06</div>
+                    <div class="toc-title-text">Implement a MCP Server</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>
+
+

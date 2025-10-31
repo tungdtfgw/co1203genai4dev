@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Processing & Features</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Document Processing & Features</h1>
+            
+            <ul class="content-list wide compact template6-list template6-grid-2col">
+                <li class="slide-in-center">
+                    <div class="main-content">
+                        <strong>Long document support</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.1s;">Handle PDFs up to 1,000 pages</li>
+                        <li class="slide-in-center" style="animation-delay: 0.15s;">Use long context models (Gemini 2.5 Pro/Flash)</li>
+                        <li class="slide-in-center" style="animation-delay: 0.2s;">Combine visual and textual cues for accuracy</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.3s;">
+                    <div class="main-content">
+                        <strong>Passing PDFs inline</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.35s;">Encode the PDF as Base64 and send with prompt</li>
+                        <li class="slide-in-center" style="animation-delay: 0.4s;">Suitable for files <20 MB</li>
+                        <li class="slide-in-center" style="animation-delay: 0.45s;">Example: summarizing a PDF via generate_content</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.5s;">
+                    <div class="main-content">
+                        <strong>Using the Files API</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.55s;">Upload large PDF files once and reuse them</li>
+                        <li class="slide-in-center" style="animation-delay: 0.6s;">Refer to the uploaded URI in prompts (document reuse)</li>
+                        <li class="slide-in-center" style="animation-delay: 0.65s;">Reduces payload size for repeated queries</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.7s;">
+                    <div class="main-content">
+                        <strong>Applications</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.75s;">Generating summaries and reports</li>
+                        <li class="slide-in-center" style="animation-delay: 0.8s;">Extracting tables or diagrams</li>
+                        <li class="slide-in-center" style="animation-delay: 0.85s;">Providing answers from technical or legal documents</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

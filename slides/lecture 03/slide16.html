@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTS Limitations & Best Practices</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">TTS Limitations & Best Practices</h1>
+            
+            <ul class="content-list wide compact template6-list template6-grid-2row">
+                <li class="slide-in-center">
+                    <div class="main-content">
+                        <strong>TTS limitations & context</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.1s;">Models only accept text and output audio</li>
+                        <li class="slide-in-center" style="animation-delay: 0.15s;">Context window limited to 32k tokens</li>
+                        <li class="slide-in-center" style="animation-delay: 0.2s;">TTS is currently a preview feature; check supported models</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.3s;">
+                    <div class="main-content">
+                        <strong>Voice & language selection</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.35s;">Choose from 30 voices (e.g., Kore, Puck, Zephyr)</li>
+                        <li class="slide-in-center" style="animation-delay: 0.4s;">Automatic language detection; 24 languages supported</li>
+                        <li class="slide-in-center" style="animation-delay: 0.45s;">Use AI Studio to hear voices before choosing</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.5s;">
+                    <div class="main-content">
+                        <strong>Best practices</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.55s;">Write natural prompts to control style & tone</li>
+                        <li class="slide-in-center" style="animation-delay: 0.6s;">Name speakers consistently in multi‑speaker prompts</li>
+                        <li class="slide-in-center" style="animation-delay: 0.65s;">Ensure you have rights to any input transcripts or scripts</li>
+                    </ul>
+                </li>
+                
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySQL Server: The CRITICAL Importance of Security</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">MySQL Server: The CRITICAL Importance of Security</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            When exposing a database or any sensitive system to an LLM, security is the #1 priority.
+                        </li>
+                        <li>
+                            This server implements a basic but essential security layer. It validates user input *before* executing it.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>mysql_mcp_server.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block" style="max-height: 320px;"><span class="comment"># From mysql_mcp_server.py in handle_select_query</span>
+
+<span class="keyword">async def</span> <span class="function">handle_select_query</span>(<span class="variable">query</span>: <span class="variable">str</span>) <span class="operator">-></span> <span class="variable">list</span>[<span class="variable">TextContent</span>]:
+    <span class="comment"># Security check 1: Only allow queries that start with SELECT.</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> <span class="variable">query</span>.<span class="function">upper</span>().<span class="function">startswith</span>(<span class="string">"SELECT"</span>):
+        <span class="keyword">return</span> [<span class="function">TextContent</span>(<span class="keyword">text</span><span class="operator">=</span><span class="string">"Error: Only SELECT queries are allowed."</span>)]
+    
+    <span class="comment"># Security check 2: Block queries containing dangerous keywords.</span>
+    <span class="variable">dangerous_keywords</span> <span class="operator">=</span> [<span class="string">"DROP"</span>, <span class="string">"DELETE"</span>, <span class="string">"UPDATE"</span>, <span class="string">"INSERT"</span>, <span class="string">"ALTER"</span>]
+    <span class="variable">query_upper</span> <span class="operator">=</span> <span class="variable">query</span>.<span class="function">upper</span>()
+    <span class="keyword">for</span> <span class="variable">keyword</span> <span class="keyword">in</span> <span class="variable">dangerous_keywords</span>:
+        <span class="keyword">if</span> <span class="variable">keyword</span> <span class="keyword">in</span> <span class="variable">query_upper</span>:
+            <span class="keyword">return</span> [<span class="function">TextContent</span>(<span class="keyword">text</span><span class="operator">=</span><span class="string">f"Error: Forbidden keyword '{keyword}'."</span>)]
+    
+    <span class="comment"># Only if checks pass, proceed to execute the query...</span>
+    <span class="keyword">try</span>:
+        <span class="comment"># ... database execution logic ...</span></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

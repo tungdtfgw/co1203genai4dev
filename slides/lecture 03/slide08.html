@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Editing Example (Python)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Image Editing Example (Python)</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            <strong>Edit a cat photo using a descriptive prompt:</strong>
+                            Load an existing image and apply modifications through text instructions
+                        </li>
+                        <li>
+                            <strong>Save the modified image:</strong>
+                            Process the response and save the edited image to a new file
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>image_editing.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="keyword">from</span> <span class="variable">google</span> <span class="keyword">import</span> <span class="variable">genai</span>
+<span class="keyword">from</span> <span class="variable">google.genai</span> <span class="keyword">import</span> <span class="variable">types</span>
+<span class="keyword">from</span> <span class="variable">PIL</span> <span class="keyword">import</span> <span class="variable">Image</span>
+<span class="keyword">from</span> <span class="variable">io</span> <span class="keyword">import</span> <span class="variable">BytesIO</span>
+
+<span class="variable">client</span> <span class="operator">=</span> <span class="function">genai.Client</span>()
+<span class="variable">prompt</span> <span class="operator">=</span> <span class="string">"Make the cat wear a red astronaut helmet and floating in space"</span>
+<span class="variable">image</span> <span class="operator">=</span> <span class="function">Image.open</span>(<span class="string">"cat.png"</span>)
+
+<span class="variable">response</span> <span class="operator">=</span> <span class="variable">client</span>.<span class="variable">models</span>.<span class="function">generate_content</span>(
+    <span class="variable">model</span><span class="operator">=</span><span class="string">"gemini-2.5-flash-image-preview"</span>,
+    <span class="variable">contents</span><span class="operator">=</span>[<span class="variable">prompt</span>, <span class="variable">image</span>],
+)
+
+<span class="keyword">for</span> <span class="variable">part</span> <span class="keyword">in</span> <span class="variable">response</span>.<span class="variable">candidates</span>[<span class="number">0</span>].<span class="variable">content</span>.<span class="variable">parts</span>:
+    <span class="keyword">if</span> <span class="variable">part</span>.<span class="variable">inline_data</span>:
+        <span class="variable">edited</span> <span class="operator">=</span> <span class="function">Image.open</span>(<span class="function">BytesIO</span>(<span class="variable">part</span>.<span class="variable">inline_data</span>.<span class="variable">data</span>))
+        <span class="variable">edited</span>.<span class="function">save</span>(<span class="string">"cat_astronaut.png"</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Caching Overview</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Input Caching Overview</h1>
+            
+            <ul class="content-list wide compact template6-list">
+                <li class="slide-in-center">
+                    <div class="main-content">
+                        <strong>Input caching is a method of storing the model's internal state after processing the beginning of the prompt.</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.1s;">It allows reusing this state for prompts with the same beginning.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.15s;">This technique helps reduce processing time by 50-85% and API costs by 50-90%.</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.3s;">
+                    <div class="main-content">
+                        <strong>Technically, input caching works by storing hidden states and attention weights.</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.35s;">The beginning of the prompt must be exactly the same to achieve a cache hit.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.4s;">Cache time-to-live (TTL) is typically from 5 minutes to 1 hour, depending on the provider.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

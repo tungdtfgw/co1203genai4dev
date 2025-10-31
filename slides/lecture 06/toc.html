@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 06 — Agenda</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header"></div>
+        <div class="slide-content">
+            <h1 class="slide-title">What We Will Cover Today</h1>
+            <div class="toc-grid">
+                <div class="toc-item slide-in-left"><div class="toc-number">01</div><div class="toc-title">The Limitation of Pre-trained LLMs</div></div>
+                <div class="toc-item slide-in-left" style="animation-delay:0.2s"><div class="toc-number">02</div><div class="toc-title">What is Fine-Tuning?</div></div>
+                <div class="toc-item slide-in-right"><div class="toc-number">03</div><div class="toc-title">Key Benefit 1</div></div>
+                <div class="toc-item slide-in-right" style="animation-delay:0.2s"><div class="toc-number">04</div><div class="toc-title">Key Benefit 2</div></div>
+                <div class="toc-item slide-in-left" style="animation-delay:0.4s"><div class="toc-number">05</div><div class="toc-title">Key Benefit 3</div></div>
+                <div class="toc-item slide-in-right" style="animation-delay:0.4s"><div class="toc-number">06</div><div class="toc-title">When to Fine-Tune</div></div>
+                <div class="toc-item slide-in-left" style="animation-delay:0.6s"><div class="toc-number">07</div><div class="toc-title">Outgrowing Prompting</div></div>
+                <div class="toc-item slide-in-right" style="animation-delay:0.6s"><div class="toc-number">08</div><div class="toc-title">When is Fine-Tuning Beneficial?</div></div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            <div class="footer-center">
+                <div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div>
+            </div>
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    <script src="presentation.js"></script>
+    <script>setupTOCNavigation();</script>
+</body>
+</html>

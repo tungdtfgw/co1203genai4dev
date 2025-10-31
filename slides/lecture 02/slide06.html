@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Your API Key - Greenwich Presentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Getting Your API Key</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>To use the Gemini API you need an API key. Create one for free in <em>Google AI Studio</em>.</li>
+                        <li>Once created, set it as an environment variable <code>GEMINI_API_KEY</code> (or <code>GOOGLE_API_KEY</code>) so the client library can pick it up automatically.</li>
+                        <li>It’s recommended to set only one of these environment variables. If both are set, <code>GOOGLE_API_KEY</code> takes precedence.</li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>bash</span>
+                            <span class="code-language">Shell</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="keyword">export</span> <span class="variable">GEMINI_API_KEY</span><span class="operator">=</span><span class="string">&lt;YOUR_API_KEY&gt;</span></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

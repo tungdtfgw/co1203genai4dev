@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 13 — Key Steps in the Fine-Tuning Process (1/2)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Key Steps in the Fine-Tuning Process (1/2)</h1>
+      
+      <div class="two-panel">
+        <div class="panel panel-text slide-in-left">
+          <ul class="content-list template2-list">
+            <li>
+              <strong>1. Select a Pre-Trained Model</strong><br>
+              Choose a base model that aligns well with your target task or domain.
+            </li>
+            <li>
+              <strong>2. Gather and Preprocess Data</strong><br>
+              Collect high-quality, diverse, and representative data for your task.<br>
+              Clean the data, format it consistently (e.g., JSON), and split it into training, validation, and test sets.
+            </li>
+            <li>
+              <strong>3. Configure Model & Tokenizer</strong><br>
+              Configure how the model is loaded, for instance, using 4-bit quantization (with QLoRA) to save memory.<br>
+              Set up the tokenizer, adding special tokens and padding strategies.
+            </li>
+          </ul>
+        </div>
+        
+        <div class="panel slide-in-right">
+          <img src="images/process.png" alt="Fine-tuning process diagram" class="panel-image">
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

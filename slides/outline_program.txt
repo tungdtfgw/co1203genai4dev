@@ -1,0 +1,69 @@
+Day 1: Introduction to Generative AI in Software Development
+- Clarify what generative AI is, how it differs from discriminative models, and why it matters for modern engineering.
+- Trace the evolution of generative models (GANs, Transformers, diffusion) and the modalities they enable (text, image, audio, video, code).
+- Break down the core building blocks: neural networks, training data, attention mechanisms, reinforcement learning from human feedback.
+- Practice prompt engineering patterns (zero-shot, few-shot, chain-of-thought, role prompting) and discuss evaluation strategies.
+- Survey the tooling landscape for developers: IDE copilots, CLI assistants, design companions, and platform SDKs.
+
+Day 2: Building with the Gemini API
+- Set up authentication, SDKs, and client configuration for Gemini models.
+- Explore stateless single-turn Q&A patterns, including temperature, safety settings, and JSON outputs.
+- Manage stateful chat sessions by storing history, injecting system prompts, and handling streaming responses.
+- Design effective system prompts and guardrails to control persona, tone, and output format.
+- Build a text-based chat application end to end, covering error handling, retries, and deployment considerations.
+
+Day 3: Multimedia with the Gemini API
+- Generate images from text, edit existing assets, and iterate with multi-turn refinement workflows.
+- Apply prompting best practices for visuals: camera vocabulary, aspect ratios, narrative prompts, and safety guidelines.
+- Produce speech with controllable tone, pace, and speaker profiles; convert audio to text with diarization and timestamps.
+- Execute document- and audio-grounded Q&A by uploading files, chunking context, and mixing modalities.
+- Review SDK samples that download multimedia outputs, manage file APIs, and combine text plus image reasoning.
+
+Day 4: Advanced GenAI Programming Concepts
+- Use Code Execution tools to let models run Python in secure sandboxes, inspect logs, and reason over outputs.
+- Implement Function Calling so models can invoke APIs, plan tool sequences, and ground answers in live data.
+- Apply prompt caching strategies (input vs. output) across providers to reduce latency and cost while avoiding pitfalls.
+- Compare vendor-specific capabilities (OpenAI, Gemini, Claude, Bedrock) and integrate caching layers in LangChain-style stacks.
+- Establish best practices for debugging, observability, and safety when combining multiple advanced features.
+
+Day 5: Retrieval-Augmented Generation (RAG)
+- Diagnose LLM pain points: knowledge cutoffs, hallucinations, and opaque sourcing.
+- Architect the indexing pipeline—data ingestion, chunking, embedding generation, and vector store persistence.
+- Run the retrieval pipeline—query embedding, similarity search, prompt augmentation, and grounded response synthesis.
+- Evaluate vector databases and orchestration frameworks, comparing managed services with open-source options.
+- Map real-world use cases (customer support, enterprise search, research assistants) and derive success metrics.
+- Share optimization tips: chunk sizing, metadata filters, rerankers, source citation, and feedback loops.
+
+Day 6: Fine-Tuning Large Language Models
+- Identify when base models fall short—domain terminology, tone consistency, structured outputs, edge cases.
+- Compare enhancement strategies: prompt engineering, RAG, adapters, full fine-tuning, and PEFT/LoRA variants.
+- Walk through the fine-tuning workflow: data curation, preprocessing, model selection, training setup, evaluation, deployment.
+- Discuss tooling (Hugging Face, Vertex AI, Bedrock, OpenAI) and techniques like QLoRA, distillation, and safety tuning.
+- Plan post-deployment monitoring, versioning, rollback, and governance for tailored models.
+
+Day 7: Model Context Protocol (MCP)
+- Explain how MCP standardizes tool integrations, turning the “M×N” problem into “M+N.”
+- Break down MCP architecture: clients, servers, JSON-RPC transport, capability discovery, and lifecycle.
+- Differentiate Tools, Resources, and Prompts, and show how LLMs decide when to call each.
+- Highlight advanced features: sampling (servers requesting model inferences), composability, remote servers, and OAuth flows.
+- Survey the ecosystem—Claude Desktop, Cursor, Windsurf, OpenAI support—and discuss emerging registries and discovery layers.
+
+Day 8: Intelligent Agents
+- Define AI agents, contrast them with chatbots, and review characteristics like autonomy, planning, and tool use.
+- Break down agent components: core model (“brain”), tool stack (“hands”), and orchestration loop (perception → planning → action → evaluation).
+- Study reasoning techniques (ReAct, Chain/Tree of Thought), guardrails, and memory strategies for long-running tasks.
+- Examine industry case studies across finance, customer care, software engineering, e-commerce, logistics, and healthcare.
+- Prototype agents with multi-agent handoffs, guardrails, and homework triage using the course codebase.
+
+Day 9: Mini-Project Kickoff
+- Form teams, choose a real problem statement, and scope an agentic or RAG-enabled solution aligned with course themes.
+- Define success criteria, datasets, external tools, and evaluation metrics; draft a project canvas.
+- Plan milestones: architecture design, proof-of-concept, MVP feature set, usability testing, and polish.
+- Review expectations for documentation, code quality, ethical considerations, and demo storytelling.
+- Schedule mentoring touchpoints, risk mitigation strategies, and channels for progress reports.
+
+Day 10: Mini-Project Demo Day
+- Finalize live demos or recorded walkthroughs highlighting the user journey and technical differentiators.
+- Present architecture diagrams, prompt/agent design choices, evaluation results, and lessons learned.
+- Receive peer and instructor feedback focused on impact, robustness, and future extensions.
+- Reflect on the end-to-end GenAI development lifecycle and outline next steps for production readiness.

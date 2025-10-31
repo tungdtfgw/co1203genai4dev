@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySQL Server: Formatting for Usability</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">MySQL Server: Formatting for Usability</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            Raw database output can be messy. A good MCP server formats data for clear presentation.
+                        </li>
+                        <li>
+                            This server uses a helper function (`format_table_data`) to turn query results into a nicely formatted text-based table, which is much easier for both the AI and the user to understand.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>Example Output</span>
+                            <span class="code-language">Text</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="comment"># Example of formatted output</span>
+
+<span class="variable">Query results:</span>
+
+<span class="variable">Query: SELECT name, price FROM products LIMIT 2</span>
+
+<span class="operator">| name          | price   |</span>
+<span class="operator">|---------------|---------|</span>
+<span class="operator">| Laptop        | 1200.00 |</span>
+<span class="operator">| Mouse         | 25.00   |</span>
+
+<span class="variable">Rows returned: 2</span></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

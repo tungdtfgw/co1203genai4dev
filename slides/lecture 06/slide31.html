@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Parameters</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Step 5: Set Training Parameters</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            Learning Rate (2e-5):
+                            Standard learning rate for BERT-based models
+                        </li>
+                        <li>
+                            Batch Sizes:
+                            16 for training (memory efficient), 32 for evaluation
+                        </li>
+                        <li>
+                            Epochs & Warmup:
+                            3 epochs with 500 warmup steps for stable training
+                        </li>
+                        <li>
+                            Weight Decay:
+                            0.01 regularization to prevent overfitting
+                        </li>
+                        <li>
+                            Evaluation Strategy:
+                            Evaluate at end of each epoch for monitoring
+                        </li>
+                        <li>
+                            Model Saving:
+                            Save best model based on evaluation loss
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>training_args.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="keyword">from</span> <span class="variable">transformers</span> <span class="keyword">import</span> <span class="function">TrainingArguments</span>
+
+<span class="variable">training_args</span> <span class="operator">=</span> <span class="function">TrainingArguments</span>(
+    <span class="keyword">output_dir</span><span class="operator">=</span><span class="string">'./results'</span>,
+    <span class="keyword">num_train_epochs</span><span class="operator">=</span><span class="keyword">3</span>,
+    <span class="keyword">per_device_train_batch_size</span><span class="operator">=</span><span class="keyword">16</span>,
+    <span class="keyword">per_device_eval_batch_size</span><span class="operator">=</span><span class="keyword">32</span>,
+    <span class="keyword">warmup_steps</span><span class="operator">=</span><span class="keyword">500</span>,
+    <span class="keyword">weight_decay</span><span class="operator">=</span><span class="keyword">0.01</span>,
+    <span class="keyword">logging_dir</span><span class="operator">=</span><span class="string">'./logs'</span>,
+    <span class="keyword">logging_steps</span><span class="operator">=</span><span class="keyword">10</span>,
+    <span class="keyword">eval_strategy</span><span class="operator">=</span><span class="string">"epoch"</span>,
+    <span class="keyword">save_strategy</span><span class="operator">=</span><span class="string">"epoch"</span>,
+    <span class="keyword">load_best_model_at_end</span><span class="operator">=</span><span class="keyword">True</span>,
+    <span class="keyword">metric_for_best_model</span><span class="operator">=</span><span class="string">"eval_loss"</span>,
+    <span class="keyword">greater_is_better</span><span class="operator">=</span><span class="keyword">False</span>,
+    <span class="keyword">push_to_hub</span><span class="operator">=</span><span class="keyword">False</span>,
+    <span class="keyword">report_to</span><span class="operator">=</span><span class="string">"none"</span>,
+)
+
+<span class="comment"># Define metrics computation</span>
+<span class="keyword">def</span> <span class="function">compute_metrics</span>(<span class="variable">eval_pred</span>):
+    <span class="variable">predictions</span>, <span class="variable">labels</span> <span class="operator">=</span> <span class="variable">eval_pred</span>
+    <span class="variable">predictions</span> <span class="operator">=</span> <span class="variable">np</span>.<span class="function">argmax</span>(<span class="variable">predictions</span>, <span class="keyword">axis</span><span class="operator">=</span><span class="keyword">1</span>)
+    <span class="keyword">return</span> {<span class="string">'accuracy'</span>: <span class="function">accuracy_score</span>(<span class="variable">labels</span>, <span class="variable">predictions</span>)}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

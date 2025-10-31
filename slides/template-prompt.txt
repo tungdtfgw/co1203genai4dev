@@ -1,0 +1,12 @@
+Bạn là 1 nhà phát triển web, hãy giúp tôi xây dựng một bộ code mẫu để làm tài liệu trình chiếu cho một khóa học.
+Tài liệu trình chiếu sẽ ở dạng web gồm
+- Trang bìa: Tên khóa học, tên bài học
+- Trang mục lục: 4-8 chủ đề cho bài học
+- Trang con mẫu 1: Tiêu đề, 4-6 ý chính cho trang
+- Trang con mẫu 2: Tiêu đề, panel trái 4-6 ý chính, panel phải: ảnh minh họa
+- Trang con mẫu 3: Tiêu đề, panel trái ảnh, panel phải: 4-6 ý chính
+- Trang con mẫu 4: Ảnh to minh họa chính giữa, text mô tả bên dưới
+- Trang con cảm ơn, Q/A
+Màu sắc chủ đạo sẽ là cam, xanh nước biển, trắng và xanh đen.
+Tất cả các trang phải đảm bảo định dạng 16:9, phải responsible (khi nội dung nhiều hay ảnh to thì tự co lại cho vừa 16:9)
+Logo Greenwich xuất hiện ở trang bìa và trang con cảm ơn

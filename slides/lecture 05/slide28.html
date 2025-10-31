@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Deep Dive: Prompting Gemini</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Step 7: Prompting LLM</h1>
+      <div class="two-panel">
+        <div class="panel panel-text slide-in-left">
+          
+          <ul class="content-list template2-list">
+            <li>The prompt's structure is key to getting high-quality, factual answers.</li>
+            <li>It contains the retrieved context, the user's question, and specific instructions for the model.</li>
+          
+            <li><strong><code>PDF Content:\n{context}</code>:</strong> This part injects all the relevant text chunks that were retrieved.</li>
+            <li><strong><code>Question: {question}</code>:</strong> This injects the user's original question.</li>
+            <li><strong><code>Instructions:...</code>:</strong> This provides clear instructions to the LLM on how it should format the answer (brief, simple).</li>
+          </ul>
+        </div>
+        <div class="panel slide-in-right">
+          <div class="code-panel">
+            <h3 class="code-title">Code Snippet & Explanation</h3>
+            <pre class="code-content">
+<span class="comment"># chat_txt_gemini.py</span>
+<span class="keyword">class</span> <span class="function">GeminiChatbot</span>:
+    <span class="keyword">def</span> <span class="function">get_response</span>(<span class="variable">self</span>, context: <span class="keyword">str</span>, question: <span class="keyword">str</span>) -> <span class="keyword">str</span>:
+        <span class="comment"># Build the detailed prompt</span>
+        prompt = <span class="string">f"""PDF Content:\n{context}\n\nQuestion: {question}\n\nInstructions: Answer briefly in 3-4 sentences, focusing on the main points. Use simple language.\n\nAnswer:"""</span>
+        
+        <span class="comment"># Call the Gemini API</span>
+        response = <span class="variable">self</span>.model.<span class="function">generate_content</span>(prompt)
+        <span class="keyword">return</span> response.text
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

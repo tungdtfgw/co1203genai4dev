@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 24 - Core Concepts of the A2A Protocol</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Core Concepts of the A2A Protocol</h1>
+            
+            <ul class="content-list template1-list">
+                <li class="slide-in-center">
+                    <strong>Agent Card</strong><br>
+                    This is the AI agent's "business card" in JSON format. It advertises the agent's capabilities, how to communicate with it (endpoints, authentication), and supported features like streaming.
+                </li>
+                
+                <li class="slide-in-center" style="animation-delay: 0.2s;">
+                    <strong>A2A Server & Client</strong><br>
+                    The A2A Server is the agent that listens for and executes tasks. The A2A Client is any program or another agent that needs a task to be completed.
+                </li>
+                
+                <li class="slide-in-center" style="animation-delay: 0.4s;">
+                    <strong>Task</strong><br>
+                    A task is a specific request that the client wants the server to perform. It includes the task description, parameters, and any required context.
+                </li>
+                
+                <li class="slide-in-center" style="animation-delay: 0.6s;">
+                    <strong>Messages</strong><br>
+                    Messages are the communication units between agents, containing task requests, responses, and status updates.
+                </li>
+                
+                <li class="slide-in-center" style="animation-delay: 0.8s;">
+                    <strong>Artifacts</strong><br>
+                    Artifacts are the outputs or results produced by agents, such as files, data, or reports that can be shared between agents.
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

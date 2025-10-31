@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI Prompt Caching - Example Code</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">OpenAI Prompt Caching - Example Code</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            With a 2048 token prompt, latency can be reduced from ~1000ms to ~300ms (70% reduction).
+                        </li>
+                        <li>
+                            With an 80% cache hit rate, API costs can be reduced by about 65% for long prompts.
+                        </li>
+                        <li>
+                            Can achieve cache hit rates >90% with good prompt design and proper session management.
+                        </li>
+                        <li>
+                            OpenAI doesn't provide direct cache hit/miss information in API responses.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>openai_caching_example.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="keyword">import</span> <span class="variable">openai</span>
+<span class="keyword">import</span> <span class="variable">time</span>
+
+<span class="keyword">class</span> <span class="function">CachedOpenAIClient</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>, <span class="variable">model</span><span class="operator">=</span><span class="string">"gpt-4"</span>):
+        <span class="variable">self</span>.<span class="variable">client</span> <span class="operator">=</span> <span class="variable">openai</span>.<span class="function">OpenAI</span>()
+        <span class="variable">self</span>.<span class="variable">model</span> <span class="operator">=</span> <span class="variable">model</span>
+        <span class="variable">self</span>.<span class="variable">cache_hits</span> <span class="operator">=</span> <span class="number">0</span>
+        <span class="variable">self</span>.<span class="variable">cache_misses</span> <span class="operator">=</span> <span class="number">0</span>
+
+    <span class="keyword">def</span> <span class="function">get_system_prompt</span>(<span class="variable">self</span>):
+        <span class="comment"># Fixed part of the prompt (system prompt)</span>
+        <span class="comment"># Ensure this part doesn't change and is long enough (>1024 tokens)</span>
+        <span class="keyword">return</span> <span class="string">"""
+You are an AI assistant specialized in Python programming.
+You provide concise, accurate, and easy-to-understand answers.
+Always include code examples when answering programming questions.
+[Add more fixed content here to reach >1024 tokens]
+"""</span></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

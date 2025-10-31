@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Instructions - Greenwich Presentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">System Instructions</h1>
+            
+            <ul class="content-list wide compact template1-list">
+                <li class="slide-in-center">
+                    System instructions guide the model’s behaviour before it processes user prompts. They help you define a persona, tone or set of rules.
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.2s;">
+                    To provide a system instruction, pass a <code>GenerateContentConfig</code> with a <code>system_instruction</code> field when calling <code>generate_content</code>.
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.4s;">
+                    System instructions are processed only once at the start of a generation, so you don’t need to include them in every prompt.
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

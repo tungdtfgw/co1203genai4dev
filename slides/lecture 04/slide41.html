@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limitations and Considerations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Limitations and Considerations</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template6-list">
+                        <li>
+                            <div class="main-content"><strong>Cache Invalidation & Storage</strong></div>
+                            <ul class="sub-list">
+                                <li>Difficult to determine when cached content becomes stale</li>
+                                <li>Manual cache invalidation may be required</li>
+                                <li>Significant storage space needed for large caches</li>
+                                <li>Memory usage can grow rapidly with cost implications</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="main-content"><strong>Security & Privacy Concerns</strong></div>
+                            <ul class="sub-list">
+                                <li>Sensitive information may be cached</li>
+                                <li>Cache access controls are crucial</li>
+                                <li>Data privacy compliance requirements</li>
+                                <li>Risk of serving outdated information</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel panel-text slide-in-right">
+                    <ul class="content-list template6-list">
+                        <li>
+                            <div class="main-content"><strong>Performance & Implementation</strong></div>
+                            <ul class="sub-list">
+                                <li>Cache lookup overhead and memory vs. speed trade-offs</li>
+                                <li>Network latency for distributed caches</li>
+                                <li>Cache key generation strategies</li>
+                                <li>Monitoring and debugging cache behavior</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="main-content"><strong>Best Practices & Strategies</strong></div>
+                            <ul class="sub-list">
+                                <li>Implement proper cache TTL policies</li>
+                                <li>Monitor cache hit rates and performance</li>
+                                <li>Use appropriate cache eviction strategies</li>
+                                <li>Cache warming and preloading techniques</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

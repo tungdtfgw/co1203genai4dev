@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stateless Interactions - Greenwich Presentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Stateless Interactions</h1>
+            
+            <ul class="content-list wide compact template1-list">
+                <li class="slide-in-center">
+                    Use the <code>generate_content</code> method for single-turn interactions. Each call is independent and the model does not retain any conversation history.
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.2s;">
+                    Stateless calls are ideal for straightforward queries, summaries or transformations where context from previous turns isn’t needed.
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.4s;">
+                    Because there is no memory, you must pass all necessary information in your prompt.
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

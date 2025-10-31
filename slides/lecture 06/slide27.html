@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Libraries - Fine-tuning Implementation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Bước 1: Import Libraries cho Fine-tuning</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            Transformers:
+                            Library chính cho pre-trained models và fine-tuning
+                        </li>
+                        <li>
+                            PyTorch:
+                            Deep learning framework để training và tensor operations
+                        </li>
+                        <li>
+                            Pandas & NumPy:
+                            Xử lý và phân tích data, matrix operations
+                        </li>
+                        <li>
+                            Scikit-learn:
+                            Đánh giá performance với metrics và data splitting
+                        </li>
+                        <li>
+                            Device Setup:
+                            Tự động detect GPU/CPU/MPS để tối ưu training speed
+                        </li>
+                        <li>
+                            Environment Config:
+                            Disable TensorFlow, enable PyTorch backend
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>import_libraries.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="keyword">import</span> <span class="variable">pandas</span> <span class="keyword">as</span> <span class="variable">pd</span>
+<span class="keyword">import</span> <span class="variable">numpy</span> <span class="keyword">as</span> <span class="variable">np</span>
+<span class="keyword">import</span> <span class="variable">torch</span>
+
+<span class="keyword">from</span> <span class="variable">transformers</span> <span class="keyword">import</span> (
+    <span class="function">AutoTokenizer</span>,
+    <span class="function">AutoModelForSequenceClassification</span>,
+    <span class="function">Trainer</span>,
+    <span class="function">TrainingArguments</span>,
+    <span class="function">DataCollatorWithPadding</span>
+)
+
+<span class="keyword">from</span> <span class="variable">sklearn.model_selection</span> <span class="keyword">import</span> <span class="function">train_test_split</span>
+<span class="keyword">from</span> <span class="variable">sklearn.metrics</span> <span class="keyword">import</span> <span class="function">accuracy_score</span>
+
+<span class="comment"># Device setup</span>
+<span class="keyword">if</span> <span class="variable">torch</span>.<span class="function">cuda</span>.<span class="function">is_available</span>():
+    <span class="variable">device</span> <span class="operator">=</span> <span class="variable">torch</span>.<span class="function">device</span>(<span class="string">'cuda'</span>)
+<span class="keyword">elif</span> <span class="variable">torch</span>.<span class="function">backends</span>.<span class="function">mps</span>.<span class="function">is_available</span>():
+    <span class="variable">device</span> <span class="operator">=</span> <span class="variable">torch</span>.<span class="function">device</span>(<span class="string">'mps'</span>)
+<span class="keyword">else</span>:
+    <span class="variable">device</span> <span class="operator">=</span> <span class="variable">torch</span>.<span class="function">device</span>(<span class="string">'cpu'</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

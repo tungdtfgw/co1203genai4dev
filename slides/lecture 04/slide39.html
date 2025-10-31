@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Bedrock Prompt Caching</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">AWS Bedrock Prompt Caching</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template6-list">
+                        <li>
+                            <div class="main-content"><strong>What is AWS Bedrock?</strong></div>
+                            <ul class="sub-list">
+                                <li>Fully managed service for building and scaling generative AI applications</li>
+                                <li>Provides access to foundation models from leading AI companies</li>
+                                <li>Includes built-in prompt caching capabilities for cost optimization</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="main-content"><strong>Prompt Caching Features</strong></div>
+                            <ul class="sub-list">
+                                <li>Automatic caching of common prompt prefixes</li>
+                                <li>Configurable cache TTL and invalidation policies</li>
+                                <li>Works with Amazon Titan, Claude, Jurassic, and Cohere models</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel panel-text slide-in-right">
+                    <ul class="content-list template6-list">
+                        <li>
+                            <div class="main-content"><strong>Implementation</strong></div>
+                            <ul class="sub-list">
+                                <li>Enable caching in model invocation requests</li>
+                                <li>Specify cache configuration parameters</li>
+                                <li>Monitor cache hit rates and performance metrics</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="main-content"><strong>Key Benefits</strong></div>
+                            <ul class="sub-list">
+                                <li>Reduced API costs through decreased token usage</li>
+                                <li>Faster response times and improved scalability</li>
+                                <li>Better resource utilization and automatic cache management</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

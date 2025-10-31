@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slides Player</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #0b1026;
+    }
+    #player {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #0b1026;
+    }
+    #slideFrame {
+      width: 100vw;
+      height: 100vh;
+      border: 0;
+      display: block;
+      background: #0b1026;
+    }
+    #controls {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      display: flex;
+      gap: 8px;
+      z-index: 1000;
+    }
+    .ctrl-btn {
+      background: #ff6b35;
+      color: #fff;
+      border: none;
+      border-radius: 22px;
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(255, 107, 53, 0.35);
+    }
+    .ctrl-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    @media (prefers-contrast: high) {
+      .ctrl-btn { outline: 2px solid #fff; }
+    }
+  </style>
+  <script>
+    (function () {
+      const slides = [
+        'cover.html',
+        'toc.html',
+        'slide1.html',
+        'slide2.html',
+        'slide3.html',
+        'slide4.html',
+        'slide5.html',
+        'slide6.html',
+        'slide7.html',
+        'slide8.html',
+        'slide9.html',
+        'slide10.html',
+        'slide11.html',
+        'slide12.html',
+        'slide13.html',
+        'slide14.html',
+        'slide15.html',
+        'slide16.html',
+        'slide17.html',
+        'slide18.html',
+        'slide19.html',
+        'slide20.html',
+        'slide21.html',
+        'slide22.html',
+        'slide23.html',
+        'slide24.html',
+        'slide25.html',
+        'slide26.html',
+        'slide27.html',
+        'slide28.html',
+        'slide29.html',
+        'slide30.html',
+        'slide31.html',
+        'slide32.html',
+        'slide33.html',
+        'thank-you.html'
+      ];
+
+      let index = 0; // 0-based
+      let frame; // iframe element
+
+      function parseHash() {
+        const raw = (location.hash || '').replace('#', '').trim();
+        if (!raw) return null;
+        const n = parseInt(raw, 10);
+        if (Number.isFinite(n)) {
+          const i = Math.max(1, Math.min(slides.length, n));
+          return i - 1; // 1-based in URL -> 0-based
+        }
+        return null;
+      }
+
+      function syncIndexFromFrame() {
+        try {
+          const href = frame.contentWindow.location.href;
+          const file = href.split('/').pop();
+          const i = slides.indexOf(file);
+          if (i >= 0) {
+            index = i;
+            updateHash();
+            updateButtons();
+          }
+        } catch (_) {
+          // ignore cross-origin issues (should be same-origin per instructions)
+        }
+      }
+
+      function updateHash() {
+        const expected = '#' + (index + 1);
+        if (location.hash !== expected) {
+          history.replaceState(null, '', expected);
+        }
+      }
+
+      function render() {
+        frame.src = slides[index];
+        updateHash();
+        updateButtons();
+      }
+
+      function next() {
+        if (index < slides.length - 1) {
+          index++;
+          render();
+        }
+      }
+
+      function prev() {
+        if (index > 0) {
+          index--;
+          render();
+        }
+      }
+
+      function first() {
+        index = 0;
+        render();
+      }
+
+      function last() {
+        index = slides.length - 1;
+        render();
+      }
+
+      function updateButtons() {
+        // No on-screen navigation buttons; keep for potential hooks.
+      }
+
+      function isFullscreen() {
+        return (
+          document.fullscreenElement ||
+          document.webkitFullscreenElement ||
+          null
+        );
+      }
+
+      function updateFsLabel() {
+        const btn = document.getElementById('fsBtn');
+        if (!btn) return;
+        const label = isFullscreen() ? 'Exit Full Screen' : 'Enter Full Screen';
+        btn.textContent = '⛶';
+        btn.setAttribute('aria-label', label);
+        btn.setAttribute('title', label);
+      }
+
+      function requestFS() {
+        const el = document.documentElement;
+        if (el.requestFullscreen) return el.requestFullscreen();
+        if (el.webkitRequestFullscreen) return el.webkitRequestFullscreen();
+      }
+
+      function exitFS() {
+        if (document.exitFullscreen) return document.exitFullscreen();
+        if (document.webkitExitFullscreen) return document.webkitExitFullscreen();
+      }
+
+      function toggleFullscreen() {
+        if (isFullscreen()) {
+          exitFS();
+        } else {
+          requestFS();
+        }
+      }
+
+      function onKeydown(e) {
+        const key = e.key;
+        switch (key) {
+          case 'ArrowRight':
+          case 'PageDown':
+          case ' ': // Space
+            e.preventDefault();
+            next();
+            break;
+          case 'ArrowLeft':
+          case 'PageUp':
+            e.preventDefault();
+            prev();
+            break;
+          case 'Home':
+            e.preventDefault();
+            first();
+            break;
+          case 'End':
+            e.preventDefault();
+            last();
+            break;
+          case 'f':
+          case 'F':
+            e.preventDefault();
+            toggleFullscreen();
+            break;
+        }
+      }
+
+      function attachFrameKeyHandling() {
+        try {
+          const w = frame.contentWindow;
+          if (!w) return;
+
+          // Forward key events from within the slide to the parent controller
+          w.addEventListener('keydown', (ev) => {
+            const keys = ['ArrowRight', 'PageDown', ' ', 'ArrowLeft', 'PageUp', 'Home', 'End', 'f', 'F'];
+            if (keys.includes(ev.key)) {
+              ev.preventDefault();
+              onKeydown(ev);
+            }
+          }, { capture: true });
+
+          // Provide bridge functions for any slide scripts
+          w.nextSlide = () => next();
+          w.previousSlide = () => prev();
+          w.toggleFullscreen = () => toggleFullscreen();
+
+          // Optional: Rewire navigation buttons inside slide footers if present
+          const doc = w.document;
+          const nextBtns = doc.querySelectorAll('.nav-btn[onclick*="nextSlide"]');
+          nextBtns.forEach((btn) => {
+            btn.onclick = (e) => { e.preventDefault(); next(); };
+          });
+          const prevBtns = doc.querySelectorAll('.nav-btn[onclick*="previousSlide"]');
+          prevBtns.forEach((btn) => {
+            btn.onclick = (e) => { e.preventDefault(); prev(); };
+          });
+        } catch (_) {
+          // ignore if cross-origin
+        }
+      }
+
+      function init() {
+        frame = document.getElementById('slideFrame');
+        const hashIndex = parseHash();
+        if (hashIndex !== null) index = hashIndex;
+        render();
+
+        document.addEventListener('keydown', onKeydown);
+        document.addEventListener('fullscreenchange', updateFsLabel);
+        document.addEventListener('webkitfullscreenchange', updateFsLabel);
+
+        frame.addEventListener('load', () => {
+          // Sync current index based on loaded slide file
+          syncIndexFromFrame();
+          // Ensure key handling continues to work within the slide
+          attachFrameKeyHandling();
+        });
+
+        // Expose minimal API for iframe access
+        window.__slidesPlayer = { next, prev, toggleFullscreen };
+
+        updateFsLabel();
+      }
+
+      window.addEventListener('DOMContentLoaded', init);
+    })();
+  </script>
+</head>
+<body>
+  <div id="player">
+    <div id="controls" aria-label="Slide controls">
+      <button id="fsBtn" class="ctrl-btn" aria-label="Enter Full Screen" title="Enter Full Screen (F)">⛶</button>
+    </div>
+    <iframe id="slideFrame" src="about:blank" allowfullscreen></iframe>
+  </div>
+  <script>
+    // Wire up control buttons after DOM is ready
+    (function () {
+      function byId(id) { return document.getElementById(id); }
+      function call(api) { return function (e) { e.preventDefault(); if (window.__slidesPlayer) window.__slidesPlayer[api](); }; }
+      window.addEventListener('DOMContentLoaded', function () {
+        const fs = byId('fsBtn');
+        if (fs) fs.addEventListener('click', call('toggleFullscreen'));
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summarizing a PDF (Python)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Summarizing a PDF (Python)</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            <strong>Fetch a remote PDF and encode as bytes:</strong>
+                            Download PDF content and prepare it for processing
+                        </li>
+                        <li>
+                            <strong>Use inline data in generate_content:</strong>
+                            Send the PDF data directly to Gemini for analysis
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>pdf_summarization.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="keyword">from</span> <span class="variable">google</span> <span class="keyword">import</span> <span class="variable">genai</span>
+<span class="keyword">from</span> <span class="variable">google.genai</span> <span class="keyword">import</span> <span class="variable">types</span>
+<span class="keyword">import</span> <span class="variable">httpx</span>
+
+<span class="variable">client</span> <span class="operator">=</span> <span class="function">genai.Client</span>()
+<span class="variable">doc_url</span> <span class="operator">=</span> <span class="string">"https://example.com/report.pdf"</span>
+<span class="comment"># Download PDF bytes</span>
+<span class="variable">doc_data</span> <span class="operator">=</span> <span class="variable">httpx</span>.<span class="function">get</span>(<span class="variable">doc_url</span>).<span class="variable">content</span>
+
+<span class="variable">response</span> <span class="operator">=</span> <span class="variable">client</span>.<span class="variable">models</span>.<span class="function">generate_content</span>(
+    <span class="variable">model</span><span class="operator">=</span><span class="string">"gemini-2.5-flash"</span>,
+    <span class="variable">contents</span><span class="operator">=</span>[
+        <span class="variable">types</span>.<span class="variable">Part</span>.<span class="function">from_bytes</span>(<span class="variable">data</span><span class="operator">=</span><span class="variable">doc_data</span>, <span class="variable">mime_type</span><span class="operator">=</span><span class="string">'application/pdf'</span>),
+        <span class="string">"Summarize this document"</span>
+    ]
+)
+<span class="function">print</span>(<span class="variable">response</span>.<span class="variable">text</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

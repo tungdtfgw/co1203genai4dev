@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When to Use Stateless Interactions - Greenwich Presentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">When to Use Stateless Interactions</h1>
+            
+            <ul class="content-list wide compact template1-list">
+                <li class="slide-in-center">
+                    One-off questions where no context needs to be preserved.
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.2s;">
+                    Generating summaries, translations or other transformations of a single input.
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.4s;">
+                    Situations where you want full control over the prompt without hidden state.
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.6s;">
+                    Avoid stateless calls for multi-turn conversations because the model won’t remember earlier messages.
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

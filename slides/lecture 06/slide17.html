@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 17 — Method 2: Parameter-Efficient Fine-Tuning (PEFT)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Method 2: Parameter-Efficient Fine-Tuning (PEFT)</h1>
+      <div class="two-panel">
+        <div class="panel panel-text slide-in-left">
+          <ul class="content-list template2-list">
+            <li>PEFT addresses the resource challenges of full fine-tuning.</li>
+            <li>Content 2</li>
+            <li>It works by freezing most of the model's parameters and only updating a small, manageable subset.</li>
+            <li>This dramatically reduces memory requirements and helps prevent catastrophic forgetting.</li>
+            <li>LoRA and QLoRA are the most widely used and effective PEFT methods today.</li>
+          </ul>
+        </div>
+        <div class="panel slide-in-right">
+          <img src="images/peft.jpg" alt="PEFT Illustration" class="panel-image">
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

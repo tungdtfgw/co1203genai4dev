@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Function Calling Works: A 3-Step Process</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">How Function Calling Works: A 3-Step Process</h1>
+            
+            <ul class="content-list wide compact template6-list">
+                <li class="slide-in-center">
+                    <div class="main-content">
+                        <strong>Step 1: Define Your Tools and Send the Prompt</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.1s;">You declare your available functions (e.g., `get_current_weather`) to the model, including their name, description, and parameters.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.15s;">You then send a user prompt like, "What's the weather like in Boston?"</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.3s;">
+                    <div class="main-content">
+                        <strong>Step 2: Handle the Model's Function Call</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.35s;">The model processes the prompt and your tool definitions. It determines that it needs to call your `get_current_weather` function.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.4s;">The API returns a `FunctionCall` object, like `{ "name": "get_current_weather", "args": { "location": "Boston, MA" } }`.</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.5s;">
+                    <div class="main-content">
+                        <strong>Step 3: Execute the Function and Return the Result</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.55s;">Your code parses this object, calls your actual weather API function with "Boston, MA", and gets the result (e.g., "72 degrees and sunny").</li>
+                        <li class="slide-in-center" style="animation-delay: 0.6s;">You send this result back to the model, which then generates a natural language response for the user.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

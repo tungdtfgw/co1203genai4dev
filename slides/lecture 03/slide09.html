@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Understanding</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Image Understanding</h1>
+            
+            <ul class="content-list wide compact template6-list template6-grid-2col">
+                <li class="slide-in-center">
+                    <div class="main-content">
+                        <strong>Image understanding tasks</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.1s;">Captioning and describing images</li>
+                        <li class="slide-in-center" style="animation-delay: 0.15s;">Classification & object detection</li>
+                        <li class="slide-in-center" style="animation-delay: 0.2s;">Visual question answering & segmentation</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.3s;">
+                    <div class="main-content">
+                        <strong>Passing images to Gemini</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.35s;">Inline bytes for small files (<20 MB)</li>
+                        <li class="slide-in-center" style="animation-delay: 0.4s;">Upload using Files API for large or reusable images</li>
+                        <li class="slide-in-center" style="animation-delay: 0.45s;">Accepts Base64 strings or file references</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.5s;">
+                    <div class="main-content">
+                        <strong>Multi‑image prompting</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.55s;">Include multiple images in one prompt</li>
+                        <li class="slide-in-center" style="animation-delay: 0.6s;">Mix uploaded files and inline data</li>
+                        <li class="slide-in-center" style="animation-delay: 0.65s;">Ask the model to compare images or find differences</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.7s;">
+                    <div class="main-content">
+                        <strong>Enhanced models</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.75s;">Gemini 2.x improves object detection & segmentation accuracy</li>
+                        <li class="slide-in-center" style="animation-delay: 0.8s;">Use appropriate model variant (e.g., 2.5 Flash) for best results</li>
+                        <li class="slide-in-center" style="animation-delay: 0.85s;">Supports long context prompts</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

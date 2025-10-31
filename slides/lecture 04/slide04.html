@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is Code Execution?</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">What is Code Execution?</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li class="slide-in-center">
+                            Code Execution allows the model to run Python code within a REPL-like environment.</li>
+                        <li class="slide-in-center">
+                            It is a tool provided by the API that the model can choose to use. The execution happens in a sandboxed, stateless environment for security.
+                        </li>
+                        <li class="slide-in-center" style="animation-delay: 0.3s;">
+                            It enables the model to perform tasks that are difficult with text alone.
+                        </li>
+                        <li class="slide-in-center" style="animation-delay: 0.4s;">
+                            The model generates the code, executes it, and observes the result to provide a final, accurate answer.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="slide-in-right">
+                    <img src="images/llm-code-execution-comparison.png" alt="Comparison of LLM Code Execution Methods" class="slide-image">
+                    <div class="image-caption">LLM code execution</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Practices & Guidelines</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Best Practices & Guidelines</h1>
+            
+            <ul class="content-list wide compact template6-list template6-grid-2col">
+                <li class="slide-in-center">
+                    <div class="main-content">
+                        <strong>Best practices for multimodal prompts</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.1s;">Use descriptive narrative prompts for images</li>
+                        <li class="slide-in-center" style="animation-delay: 0.15s;">Specify speakers and voices clearly for TTS</li>
+                        <li class="slide-in-center" style="animation-delay: 0.2s;">Provide timestamps and clear questions for audio</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.3s;">
+                    <div class="main-content">
+                        <strong>File size & length limits</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.35s;">Inline media must keep total request <20 MB</li>
+                        <li class="slide-in-center" style="animation-delay: 0.4s;">Audio length capped at 9.5 hours</li>
+                        <li class="slide-in-center" style="animation-delay: 0.45s;">Context windows limit responses (32k tokens for TTS)</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.5s;">
+                    <div class="main-content">
+                        <strong>Rights & safety</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.55s;">Upload only content you own or have rights to</li>
+                        <li class="slide-in-center" style="animation-delay: 0.6s;">Avoid generating harmful, deceptive or offensive content</li>
+                        <li class="slide-in-center" style="animation-delay: 0.65s;">Review Google's policies and SynthID watermarks</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.7s;">
+                    <div class="main-content">
+                        <strong>Choosing the right model</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.75s;">Gemini 2.5 Flash vs Pro: trade‑offs in speed & context</li>
+                        <li class="slide-in-center" style="animation-delay: 0.8s;">Use models with TTS or image capabilities as needed</li>
+                        <li class="slide-in-center" style="animation-delay: 0.85s;">Test prompts in AI Studio before deployment</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

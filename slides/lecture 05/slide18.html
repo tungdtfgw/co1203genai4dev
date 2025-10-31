@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Example: A Simple RAG Pipeline with LangChain</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Code Example: A Simple RAG Pipeline with LangChain</h1>
+      <div class="two-panel">
+        <div class="panel panel-text slide-in-left">
+          
+          <ul class="content-list template2-list">
+            <li><strong>Step 1: Setup:</strong> We install libraries and initialize our core components: the LLM, the embedding model, and a document loader.</li>
+            <li><strong>Step 2: Indexing:</strong> We load a document, split it into chunks, and store it in a FAISS vector store. This process creates our retriever.</li>
+            <li><strong>Step 3: Chain Creation:</strong> We define a prompt template and create a "retrieval chain" that links the user input, the retriever, and the LLM.</li>
+            <li><strong>Step 4: Invocation:</strong> We ask a question. The chain automatically handles retrieving context and generating an answer based on it.</li>
+          </ul>
+        </div>
+        <div class="panel slide-in-right">
+          <div class="code-panel">
+            <h3 class="code-title">Code Illustration</h3>
+            <pre class="code-content">
+<span class="comment"># main.py</span>
+<span class="comment"># Requirements: pip install langchain langchain-openai faiss-cpu beautifulsoup4</span>
+<span class="keyword">import</span> os
+<span class="keyword">from</span> langchain_community.document_loaders <span class="keyword">import</span> WebBaseLoader
+<span class="keyword">from</span> langchain_community.vectorstores <span class="keyword">import</span> FAISS
+<span class="keyword">from</span> langchain_openai <span class="keyword">import</span> OpenAIEmbeddings, ChatOpenAI
+<span class="keyword">from</span> langchain.text_splitter <span class="keyword">import</span> RecursiveCharacterTextSplitter
+
+<span class="comment"># --- STEP 1: SETUP ENVIRONMENT AND COMPONENTS ---</span>
+<span class="comment"># Note: Need OpenAI API key in environment variable</span>
+<span class="comment"># os.environ["OPENAI_API_KEY"] = "YOUR_API_KEY"</span>
+<span class="variable">llm</span> <span class="operator">=</span> <span class="function">ChatOpenAI</span><span class="operator">(</span><span class="keyword">model</span><span class="operator">=</span><span class="string">"gpt-3.5-turbo"</span><span class="operator">)</span>
+<span class="variable">embeddings</span> <span class="operator">=</span> <span class="function">OpenAIEmbeddings</span><span class="operator">()</span>
+
+<span class="comment"># --- STEP 2: INDEXING PROCESS (DATA PREPARATION) ---</span>
+<span class="comment"># Load documents from a web source</span>
+<span class="variable">loader</span> <span class="operator">=</span> <span class="function">WebBaseLoader</span><span class="operator">(</span><span class="string">"https://docs.smith.langchain.com/user_guide"</span><span class="operator">)</span>
+<span class="variable">docs</span> <span class="operator">=</span> <span class="variable">loader</span><span class="operator">.</span><span class="function">load</span><span class="operator">()</span>
+
+<span class="comment"># Split documents into smaller chunks</span>
+<span class="variable">text_splitter</span> <span class="operator">=</span> <span class="function">RecursiveCharacterTextSplitter</span><span class="operator">(</span><span class="keyword">chunk_size</span><span class="operator">=</span><span class="number">1000</span><span class="operator">,</span> <span class="keyword">chunk_overlap</span><span class="operator">=</span><span class="number">200</span><span class="operator">)</span>
+<span class="variable">documents</span> <span class="operator">=</span> <span class="variable">text_splitter</span><span class="operator">.</span><span class="function">split_documents</span><span class="operator">(</span><span class="variable">docs</span><span class="operator">)</span>
+
+<span class="comment"># Create embeddings for chunks and save to vector store (FAISS)</span>
+<span class="comment"># This vector store will act as the retriever</span>
+<span class="variable">vector_store</span> <span class="operator">=</span> <span class="variable">FAISS</span><span class="operator">.</span><span class="function">from_documents</span><span class="operator">(</span><span class="variable">documents</span><span class="operator">,</span> <span class="variable">embeddings</span><span class="operator">)</span>
+<span class="variable">retriever</span> <span class="operator">=</span> <span class="variable">vector_store</span><span class="operator">.</span><span class="function">as_retriever</span><span class="operator">()</span>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

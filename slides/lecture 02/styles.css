@@ -1,0 +1,1227 @@
+/* Greenwich Presentation Template Styles */
+/* Color Scheme: Orange (#FF6B35), Navy Blue (#3B4F9A), White (#FFFFFF), Dark Blue (#1E2A5E) */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-orange: #FF6B35;
+    --primary-navy: #3B4F9A;
+    --dark-blue: #1E2A5E;
+    --white: #FFFFFF;
+    --light-gray: #F5F5F5;
+    --text-dark: #333333;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--white);
+    overflow-x: hidden;
+}
+
+/* Fix strong tags to stay inline and not split into columns */
+strong {
+    display: inline !important;
+}
+
+/* Additional fix for strong tags inside flex list items */
+.content-list li strong {
+    display: inline !important;
+    flex: none !important;
+}
+
+/* Slide Container - 16:9 Aspect Ratio */
+.slide {
+    width: 100vw;
+    height: 100vh;
+    min-height: 600px;
+    max-height: 1080px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 0 60px 0 60px;
+    background: var(--white);
+    overflow: hidden;
+}
+
+/* Responsive aspect ratio maintenance */
+@media (max-aspect-ratio: 16/9) {
+    .slide {
+        height: calc(100vw * 9 / 16);
+    }
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .slide {
+        width: calc(100vh * 16 / 9);
+        margin: 0 auto;
+    }
+}
+
+/* Header */
+.slide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid var(--primary-orange);
+    min-height: 50px;
+    height: 50px;
+}
+
+/* slide-number removed */
+
+/* Slide number in footer (new position) */
+/* footer slide-number removed */
+
+/* Main Content Area */
+.slide-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+}
+
+/* Center content vertically for templates that need it */
+.slide-content.center-vertical {
+    justify-content: center;
+    padding-top: 20px;
+}
+
+/* Typography */
+.slide-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: bold;
+    color: var(--primary-navy);
+    margin-bottom: 20px;
+    margin-top: 0;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.slide-subtitle {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    color: var(--primary-orange);
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.slide-author {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: var(--primary-orange);
+    margin-top: 20px;
+    font-style: italic;
+}
+
+/* Content Lists - Default styles for Template 2, 3 */
+.content-list {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    width: 100%;
+}
+
+.content-list.wide {
+    max-width: 80%;
+    width: 80%;
+}
+
+.content-list li {
+    background: var(--light-gray);
+    margin: 8px 0;
+    padding: 15px 25px;
+    border-left: 5px solid var(--primary-orange);
+    border-radius: 8px;
+    font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    text-align: left;
+    line-height: 1.4;
+}
+
+/* Template 1 specific styles - Flexible vertical distribution */
+.content-list.template1-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex: 1;
+    height: auto;
+    min-height: 300px;
+    max-width: 85%;
+    width: 85%;
+}
+
+.content-list.template1-list.wide {
+    min-height: 350px;
+}
+
+.content-list.template1-list.compact {
+    min-height: 250px;
+}
+
+/* Template 1 - Flexible font sizing based on item count */
+/* 3 items or less - larger font, more spacing */
+.content-list.template1-list:has(li:nth-child(1):nth-last-child(1)) li,
+.content-list.template1-list:has(li:nth-child(2):nth-last-child(1)) li,
+.content-list.template1-list:has(li:nth-child(3):nth-last-child(1)) li {
+    margin: 15px 0;
+    padding: 25px 30px;
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    line-height: 1.5;
+    flex: 1;
+    display: block;
+    
+    min-height: 60px;
+}
+
+/* 4 items - medium-large font */
+.content-list.template1-list:has(li:nth-child(4):nth-last-child(1)) li {
+    margin: 12px 0;
+    padding: 20px 25px;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    line-height: 1.4;
+    flex: 1;
+    display: block;
+    
+    min-height: 60px;
+}
+
+/* 5 items - medium font */
+.content-list.template1-list:has(li:nth-child(5):nth-last-child(1)) li {
+    margin: 10px 0;
+    padding: 18px 22px;
+    font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+    line-height: 1.4;
+    flex: 1;
+    display: block;
+    
+    min-height: 60px;
+}
+
+/* 6 items - smaller font, compact spacing */
+.content-list.template1-list:has(li:nth-child(6):nth-last-child(1)) li {
+    margin: 8px 0;
+    padding: 15px 20px;
+    font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+    line-height: 1.35;
+    flex: 1;
+    display: block;
+    
+    min-height: 60px;
+}
+
+/* 7+ items - smallest font, most compact */
+.content-list.template1-list:has(li:nth-child(7)) li {
+    margin: 6px 0;
+    padding: 12px 18px;
+    font-size: clamp(0.85rem, 1.1vw, 1rem);
+    line-height: 1.3;
+    flex: 1;
+    display: block;
+    
+    min-height: 60px;
+}
+
+/* Fallback for browsers that don't support :has() */
+@supports not selector(:has(*)) {
+    .content-list.template1-list.compact li {
+        margin: 8px 0;
+        padding: 15px 20px;
+        font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+        line-height: 1.35;
+        flex: 1;
+        display: block;
+        
+        min-height: 60px;
+    }
+}
+
+/* Template 3 specific styles - Flexible list in two-panel layout */
+.panel .content-list.template3-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    max-height: calc(100vh - 300px); /* Reserve space for header, footer and title */
+    overflow: hidden;
+}
+
+/* Template 3 - Flexible font sizing based on item count */
+/* 3 items or less - larger font, more spacing */
+.content-list.template3-list:has(li:nth-child(1):nth-last-child(1)) li,
+.content-list.template3-list:has(li:nth-child(2):nth-last-child(1)) li,
+.content-list.template3-list:has(li:nth-child(3):nth-last-child(1)) li {
+    margin: 12px 0;
+    padding: 20px 20px;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.5;
+    flex: 1;
+    display: block;
+    
+    min-height: 50px;
+}
+
+/* 4 items - medium-large font */
+.content-list.template3-list:has(li:nth-child(4):nth-last-child(1)) li {
+    margin: 10px 0;
+    padding: 18px 18px;
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+    line-height: 1.4;
+    flex: 1;
+    display: block;
+    
+    min-height: 45px;
+}
+
+/* 5 items - medium font */
+.content-list.template3-list:has(li:nth-child(5):nth-last-child(1)) li {
+    margin: 8px 0;
+    padding: 16px 16px;
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    line-height: 1.4;
+    flex: 1;
+    display: block;
+    
+    min-height: 40px;
+}
+
+/* 6 items - smaller font, compact spacing */
+.content-list.template3-list:has(li:nth-child(6):nth-last-child(1)) li {
+    margin: 6px 0;
+    padding: 14px 14px;
+    font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+    line-height: 1.35;
+    flex: 1;
+    display: block;
+    
+    min-height: 35px;
+}
+
+/* 7+ items - smallest font, most compact */
+.content-list.template3-list:has(li:nth-child(7)) li {
+    margin: 4px 0;
+    padding: 12px 12px;
+    font-size: clamp(0.8rem, 1vw, 0.9rem);
+    line-height: 1.3;
+    flex: 1;
+    display: block;
+    
+    min-height: 30px;
+}
+
+/* Fallback for Template 3 */
+@supports not selector(:has(*)) {
+    .content-list.template3-list li {
+        margin: 6px 0;
+        padding: 14px 14px;
+        font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+        line-height: 1.35;
+        flex: 1;
+        display: block;
+        
+        min-height: 35px;
+    }
+}
+
+/* Template 2 specific styles - Flexible list in two-panel layout */
+.panel .content-list.template2-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    max-height: calc(100vh - 300px); /* Reserve space for header, footer and title */
+    overflow: hidden;
+}
+
+/* Template 2 - Flexible font sizing based on item count (similar to Template 3) */
+/* 3 items or less - larger font, more spacing */
+.content-list.template2-list:has(li:nth-child(1):nth-last-child(1)) li,
+.content-list.template2-list:has(li:nth-child(2):nth-last-child(1)) li,
+.content-list.template2-list:has(li:nth-child(3):nth-last-child(1)) li {
+    margin: 12px 0;
+    padding: 20px 20px;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.5;
+    flex: 1;
+    display: block;
+    
+    min-height: 50px;
+}
+
+/* 4 items - medium-large font */
+.content-list.template2-list:has(li:nth-child(4):nth-last-child(1)) li {
+    margin: 10px 0;
+    padding: 18px 18px;
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+    line-height: 1.4;
+    flex: 1;
+    display: block;
+    
+    min-height: 45px;
+}
+
+/* 5 items - medium font */
+.content-list.template2-list:has(li:nth-child(5):nth-last-child(1)) li {
+    margin: 8px 0;
+    padding: 16px 16px;
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    line-height: 1.4;
+    flex: 1;
+    display: block;
+    
+    min-height: 40px;
+}
+
+/* 6 items - smaller font, compact spacing */
+.content-list.template2-list:has(li:nth-child(6):nth-last-child(1)) li {
+    margin: 6px 0;
+    padding: 14px 14px;
+    font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+    line-height: 1.35;
+    flex: 1;
+    display: block;
+    
+    min-height: 35px;
+}
+
+/* 7+ items - smallest font, most compact */
+.content-list.template2-list:has(li:nth-child(7)) li {
+    margin: 4px 0;
+    padding: 12px 12px;
+    font-size: clamp(0.8rem, 1vw, 0.9rem);
+    line-height: 1.3;
+    flex: 1;
+    display: block;
+    
+    min-height: 30px;
+}
+
+/* Fallback for Template 2 */
+@supports not selector(:has(*)) {
+    .content-list.template2-list li {
+        margin: 6px 0;
+        padding: 14px 14px;
+        font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+        line-height: 1.35;
+        flex: 1;
+        display: block;
+        
+        min-height: 35px;
+    }
+}
+
+.content-list li:hover {
+    transform: translateX(10px);
+    box-shadow: var(--shadow);
+    background: var(--white);
+}
+
+.content-list li::before {
+    content: "❖";
+    color: var(--primary-orange);
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+/* Two-panel layouts */
+.two-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px; /* Reduced from 60px */
+    
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 15px; /* Reduced from 20px */
+    max-height: calc(100vh - 280px); /* More space reserved for header and footer */
+    overflow: hidden;
+    min-height: 0; /* allow inner panels to shrink */
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 0; /* critical for nested scrolling */
+}
+
+.panel .code-panel { flex: 1 1 auto; min-height: 0; }
+
+.panel-image {
+    width: 100%;
+    height: auto;
+    max-height: 320px; /* Further reduced to ensure footer fits */
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.panel-text {
+    text-align: left;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.panel-text .content-list li {
+    text-align: left;
+}
+
+/* Image-focused template */
+.image-focus {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    max-height: calc(100vh - 250px); /* Reserve more space for header and footer */
+    overflow: hidden;
+}
+
+.main-image {
+    width: 100%;
+    max-width: 700px;
+    max-height: 40vh; /* Further reduced to ensure footer fits */
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 15px; /* Further reduced margin */
+}
+
+.image-description {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: var(--text-dark);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* Footer */
+.slide-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+    margin-top: auto;
+    border-top: 3px solid var(--primary-orange);
+    background: var(--primary-navy);
+    margin: 0 -60px 0 -60px;
+    position: relative;
+}
+
+.footer-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 20px;
+}
+
+.footer-nav {
+    display: flex !important;
+    gap: 20px;
+    
+    justify-content: center;
+}
+
+.footer-nav .nav-btn {
+    position: static !important;
+    background: var(--primary-orange) !important;
+    color: var(--white) !important;
+    border: none !important;
+    padding: 8px 16px !important;
+    border-radius: 20px !important;
+    cursor: pointer !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    transition: all 0.3s ease !important;
+    box-shadow: none !important;
+    display: inline-block !important;
+}
+
+.footer-nav .nav-btn:hover {
+    background: var(--white) !important;
+    color: var(--primary-navy) !important;
+    transform: translateY(-1px) !important;
+}
+
+.footer-nav .nav-btn:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    background: var(--primary-orange) !important;
+    color: var(--white) !important;
+}
+
+.footer-logo {
+    height: 60px;
+    width: auto;
+}
+
+.footer-text {
+    color: var(--white);
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+}
+
+.footer-url {
+    color: var(--primary-orange);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Cover Page Specific Styles */
+.cover-slide {
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--dark-blue) 100%);
+    color: var(--white);
+    text-align: center;
+}
+
+/* Cover page 3-section layout */
+.cover-slide .slide-content {
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    
+    flex: 1;
+    padding: 0;
+    max-height: calc(100vh - 140px); /* Reserve space for header and footer */
+    overflow: hidden;
+}
+
+.cover-section {
+    width: 100%;
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    
+    padding: 30px 60px; /* Reduced from 40px to 30px */
+    flex: 1;
+    min-height: 0; /* Allow sections to shrink */
+}
+
+.cover-section-blue {
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--dark-blue) 100%);
+    color: var(--white);
+}
+
+.cover-section-white {
+    background: var(--white);
+    color: var(--text-dark);
+    display: block;
+    justify-content: center;
+    
+    min-height: 140px; /* Reduced from 200px to 140px */
+    max-height: 180px; /* Add max height limit */
+}
+
+.cover-logo {
+    max-height: 120px; /* Reduced from 150px to 120px */
+    max-width: 250px; /* Reduced from 300px to 250px */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Ensure consistent header height across all slide types */
+.cover-slide .slide-header,
+.thanks-slide .slide-header,
+.slide .slide-header {
+    min-height: 50px;
+    height: 50px;
+    box-sizing: border-box;
+}
+
+.cover-slide .slide-title {
+    color: var(--white);
+    font-size: clamp(3rem, 6vw, 5rem);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-top: 0;
+}
+
+.cover-slide .slide-subtitle {
+    color: var(--primary-orange);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* Table of Contents */
+.toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.toc-item {
+    background: var(--light-gray);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 3px solid transparent;
+    cursor: pointer;
+}
+
+.toc-item:hover {
+    background: var(--white);
+    border-color: var(--primary-orange);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.toc-number {
+    background: var(--primary-navy);
+    color: var(--white);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: block;
+    
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0 auto 20px auto;
+}
+
+.toc-title {
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    font-weight: bold;
+    color: var(--primary-navy);
+}
+
+/* Thank You Page */
+.thanks-slide {
+    background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
+}
+
+.thanks-content {
+    text-align: center;
+    max-width: 600px;
+}
+
+.thanks-title {
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--primary-navy);
+    margin-bottom: 40px;
+}
+
+.qa-section {
+    background: var(--primary-orange);
+    color: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    margin: 40px 0;
+}
+
+.qa-title {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: 15px;
+}
+
+.contact-info {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px dashed var(--primary-navy);
+    margin-top: 30px;
+    color: var(--text-dark);
+}
+
+/* Navigation - Hide the original floating controls */
+.nav-controls {
+    display: none;
+}
+
+/* Debug: Ensure footer nav is visible */
+.slide-footer .footer-nav {
+    min-width: 80px;
+    height: auto;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.nav-btn {
+    background: var(--primary-navy);
+    color: var(--white);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+.nav-btn:hover {
+    background: var(--primary-orange);
+    transform: translateY(-2px);
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .slide {
+        padding: 20px 30px;
+    }
+    
+    .two-panel {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .toc-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .slide-footer {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .nav-controls {
+        bottom: 15px;
+        right: 15px;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide {
+        padding: 15px 20px;
+    }
+    
+    .content-list li {
+        padding: 15px 20px;
+        font-size: 1rem;
+    }
+    
+    .footer-logo {
+        height: 40px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .nav-controls {
+        display: none;
+    }
+    
+    .slide {
+        page-break-after: always;
+        height: auto;
+        min-height: auto;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.slide-in-right {
+    animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.slide-in-center {
+    animation: slideInCenter 0.8s ease-out;
+}
+
+@keyframes slideInCenter {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Code Template Styles (Template 5) */
+.code-panel {
+    background: #2d3748;
+    border-radius: 12px;
+    padding: 20px;
+    /* Let inner code scroll without pushing footer */
+    display: block;
+    flex-direction: column;
+    height: 100%;
+    max-height: 100%;
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+.code-header {
+    background: #4a5568;
+    color: #e2e8f0;
+    padding: 8px 16px;
+    border-radius: 8px 8px 0 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: -20px -20px 15px -20px;
+    display: block;
+    
+    justify-content: space-between;
+}
+
+.code-language {
+    background: var(--primary-orange);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.code-content {
+    background: #2d3748;
+    color: #e2e8f0;
+    font-family: 'Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+    font-size: clamp(0.75rem, 1vw, 0.9rem);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
+    /* Scroll when code is long; fill available height */
+    flex: 1 1 auto;
+    min-height: 0; /* allow flex child to shrink */
+    overflow: auto;
+}
+
+/* Syntax highlighting colors */
+.code-content .keyword { color: #f472b6; font-weight: bold; }
+.code-content .string { color: #34d399; }
+.code-content .comment { color: #9ca3af; font-style: italic; }
+.code-content .function { color: #60a5fa; }
+.code-content .variable { color: #fbbf24; }
+.code-content .operator { color: #f87171; }
+.code-content .number { color: #a78bfa; }
+
+/* Template 5 specific list styles */
+.panel .content-list.template5-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    max-height: calc(100vh - 300px);
+    overflow: hidden;
+}
+
+/* Template 5 - Flexible font sizing based on item count */
+.content-list.template5-list:has(li:nth-child(1):nth-last-child(1)) li,
+.content-list.template5-list:has(li:nth-child(2):nth-last-child(1)) li,
+.content-list.template5-list:has(li:nth-child(3):nth-last-child(1)) li,
+.content-list.template5-list:has(li:nth-child(4):nth-last-child(1)) li {
+    margin: 12px 0;
+    padding: 20px 20px;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.5;
+    flex: 1;
+    display: block;
+    
+    min-height: 50px;
+}
+
+.content-list.template5-list:has(li:nth-child(5):nth-last-child(1)) li,
+.content-list.template5-list:has(li:nth-child(6):nth-last-child(1)) li {
+    margin: 8px 0;
+    padding: 16px 16px;
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    line-height: 1.4;
+    flex: 1;
+    display: block;
+    
+    min-height: 40px;
+}
+
+/* Fallback for Template 5 */
+@supports not selector(:has(*)) {
+    .content-list.template5-list li {
+        margin: 8px 0;
+        padding: 16px 16px;
+        font-size: clamp(0.9rem, 1.2vw, 1rem);
+        line-height: 1.4;
+        flex: 1;
+        display: block;
+        
+        min-height: 40px;
+    }
+}
+
+/* Responsive code panel */
+@media (max-width: 768px) {
+    .code-content {
+        font-size: 0.7rem;
+        line-height: 1.4;
+    }
+    
+    .code-panel {
+        padding: 15px;
+    }
+    
+    .code-header {
+        margin: -15px -15px 10px -15px;
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Template 6 - Text List with 2 Levels */
+.content-list.template6-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex: 1;
+    height: 100%;
+    min-height: 400px;
+    max-width: 85%;
+    width: 85%;
+}
+
+.content-list.template6-list.wide {
+    min-height: 450px;
+}
+
+/* Level 1 with orange left border like template1 but no bullets */
+.content-list.template6-list > li {
+    background: #F5F5F5;
+    margin: 8px 0;
+    padding: 15px 20px;
+    border-left: 5px solid #FF6B35;
+    border-radius: 8px;
+    font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+    line-height: 1.35;
+    flex: 1;
+    display: block;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: 60px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    text-align: left;
+    list-style: none;
+}
+
+/* Ensure no pseudo-elements for level 1 */
+.content-list.template6-list > li::before,
+.content-list.template6-list > li::after {
+    display: none;
+    content: none;
+}
+
+/* Main content wrapper to keep title and description on same line */
+.content-list.template6-list > li > .main-content {
+    display: block;
+    width: 100%;
+}
+
+/* Sub-list styles for level 2 */
+.content-list.template6-list .sub-list {
+    list-style: none;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+.content-list.template6-list .sub-list li {
+    background: none;
+    border: none;
+    margin: 2px 0;
+    padding: 2px 0 2px 20px;
+    font-size: 0.8em;
+    line-height: 1.2;
+    color: #555;
+    position: relative;
+    flex: none;
+    min-height: auto;
+    display: block;
+}
+
+.content-list.template6-list .sub-list li::before {
+    content: "▸";
+    color: #ff6600;
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 0.9em;
+}
+
+.scrollable-code {
+    max-height: 400px; /* Adjust as needed */
+    overflow-y: auto;
+}
+
+/* Two Panel Layout */
+.two-panel {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+.panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    max-height: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.panel-text {
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+}
+
+/* Ensure code panel is not affected by panel-text styling */
+.panel:not(.panel-text) {
+    background: none !important;
+    border: none !important;
+    border-left: none !important;
+    padding: 0 !important;
+}
+
+.panel:not(.panel-text) * {
+    background: inherit;
+}
+
+.panel-text .content-list {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    flex: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+.panel-text .content-list li {
+    margin-bottom: 10px;
+    padding: 12px 16px;
+    background: var(--light-gray);
+    border-radius: 6px;
+    border-left: 3px solid var(--primary-orange);
+    line-height: 1.4;
+    font-size: 16px;
+    height: auto;
+    min-height: auto;
+}
+
+.panel-text .content-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Code Panel */
+.code-panel {
+    background: #1a1a1a !important;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    height: fit-content;
+    min-height: auto;
+    border: none !important;
+    border-left: none !important;
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2d2d2d !important;
+    padding: 10px 15px;
+    border-bottom: 1px solid #404040;
+    font-size: 14px;
+    color: #e0e0e0;
+    border-left: none !important;
+}
+
+.code-content {
+    background: #1a1a1a !important;
+    color: #e0e0e0 !important;
+    padding: 15px;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.4;
+    border: none !important;
+    border-left: none !important;
+}
+
+.code-language {
+    background: var(--primary-orange) !important;
+    color: white !important;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Full-screen optimizations for template1-list */
+@media (min-height: 800px) {
+    .content-list.template1-list {
+        min-height: 350px;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .content-list.template1-list.wide {
+        min-height: 400px;
+    }
+    
+    .content-list.template1-list.compact {
+        min-height: 280px;
+    }
+    
+    /* Reduce padding for better proportion in full-screen */
+    .content-list.template1-list li {
+        padding: 20px 25px;
+        margin: 10px 0;
+    }
+}

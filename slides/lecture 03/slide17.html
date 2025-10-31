@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Understanding Overview</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Audio Understanding Overview</h1>
+            
+            <ul class="content-list wide compact template6-list template6-grid-2col">
+                <li class="slide-in-center">
+                    <div class="main-content">
+                        <strong>Audio understanding tasks</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.1s;">Describe or summarize audio clips</li>
+                        <li class="slide-in-center" style="animation-delay: 0.15s;">Provide transcripts of speech</li>
+                        <li class="slide-in-center" style="animation-delay: 0.2s;">Analyze specific segments via timestamps</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.3s;">
+                    <div class="main-content">
+                        <strong>Providing audio inputs</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.35s;">Upload audio files using the Files API ( >20 MB )</li>
+                        <li class="slide-in-center" style="animation-delay: 0.4s;">Pass inline audio data for small files</li>
+                        <li class="slide-in-center" style="animation-delay: 0.45s;">Use supported formats like WAV, MP3, AIFF, OGG & FLAC</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.5s;">
+                    <div class="main-content">
+                        <strong>Requesting summaries & Q&A</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.55s;">Ask open‑ended questions about the audio</li>
+                        <li class="slide-in-center" style="animation-delay: 0.6s;">Request a complete transcript or partial transcript</li>
+                        <li class="slide-in-center" style="animation-delay: 0.65s;">Combine audio and text prompts for context</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.7s;">
+                    <div class="main-content">
+                        <strong>Technical considerations</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.75s;">Each second of audio ≈32 tokens</li>
+                        <li class="slide-in-center" style="animation-delay: 0.8s;">Max combined audio length: 9.5 hours</li>
+                        <li class="slide-in-center" style="animation-delay: 0.85s;">Audio is downsampled and mixed to mono</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

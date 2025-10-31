@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 27 - tut02_3agents.py Specialists</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Specialist Tutor Agents</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li><strong>Domain experts:</strong> math and history tutors receive tailored instructions.</li>
+                        <li><strong>Clear handoffs:</strong> <code>handoff_description</code> summarizes when to route to each agent.</li>
+                        <li><strong>Pedagogical tone:</strong> prompts ask for step-by-step reasoning and context.</li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>tut02_3agents.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block" style="max-height: 320px; overflow: auto;"><code><span class="comment"># tut02_3agents.py — specialist tutors</span>
+<span class="variable">math_tutor_agent</span> = <span class="variable">Agent</span>(
+    <span class="variable">name</span>=<span class="string">"Math Tutor"</span>,
+    <span class="variable">handoff_description</span>=<span class="string">"Specialist agent for math questions"</span>,
+    <span class="variable">instructions</span>=<span class="string">"You provide help with math problems. Explain your reasoning at each step and include examples"</span>,
+)
+
+
+<span class="variable">history_tutor_agent</span> = <span class="variable">Agent</span>(
+    <span class="variable">name</span>=<span class="string">"History Tutor"</span>,
+    <span class="variable">handoff_description</span>=<span class="string">"Specialist agent for historical questions"</span>,
+    <span class="variable">instructions</span>=<span class="string">"You provide assistance with historical queries. Explain important events and context clearly."</span>,
+)</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

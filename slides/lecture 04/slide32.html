@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI Prompt Caching - Implementation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">OpenAI Prompt Caching - Implementation</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            To leverage caching, divide the prompt into fixed (system prompt, context) and changing (user query) parts.
+                        </li>
+                        <li>
+                            Ensure the fixed part is long enough (>1024 tokens).
+                        </li>
+                        <li>
+                            Always place the fixed part at the beginning of the prompt, as OpenAI only caches the beginning.
+                        </li>
+                        <li>
+                            Keep the fixed part unchanged and identical between requests.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>openai_caching_implementation.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="keyword">import</span> <span class="variable">openai</span>
+
+<span class="comment"># Fixed part of the prompt (system prompt + context)</span>
+<span class="variable">system_prompt</span> <span class="operator">=</span> <span class="string">"""
+You are an AI assistant specialized in Python programming.
+You provide concise, accurate, and easy-to-understand answers.
+Always include code examples when answering programming questions.
+Here are some rules you must follow:
+1. Use PEP 8 for code formatting
+2. Prefer Pythonic solutions
+3. Explain code clearly
+4. Suggest best practices
+"""</span>
+
+<span class="comment"># Function to create full prompt</span>
+<span class="keyword">def</span> <span class="function">create_prompt</span>(<span class="variable">user_query</span>):
+    <span class="comment"># Ensure fixed part at beginning, changing part at end</span>
+    <span class="keyword">return</span> <span class="string">f"{system_prompt}\\n\\nUser Query: {user_query}"</span></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 3: Text Chunking</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Step 3: Text Chunking</h1>
+      <div class="two-panel">
+        <div class="panel panel-text slide-in-left equal-height-lists">
+          <!-- <div class="content-intro">
+            <p class="intro-text"><strong>Code Deep Dive:</strong> <code>RecursiveCharacterTextSplitter</code></p>
+          </div> -->
+          <ul class="content-list template2-list equal-height-item">
+            <li>We use LangChain's smart splitter to break down the extracted text into manageable chunks.</li>
+            <li>This is crucial for fitting the text into the model's context window and for precise retrieval.</li>
+          
+            <li><strong><code>chunk_size=500</code>:</strong> Each chunk will have a maximum of 500 characters.</li>
+            <li><strong><code>chunk_overlap=50</code>:</strong> The last 50 characters of a chunk will be the first 50 characters of the next to ensure no context is lost at the split point.</li>
+            <li><strong><code>separators</code>:</strong> The priority order for splitting text, starting from paragraphs (<code>\n\n</code>) down to single characters.</li>
+          </ul>
+        </div>
+        <div class="panel slide-in-right">
+          <div class="code-panel">
+            <h3 class="code-title">Code Snippet & Explanation</h3>
+            <pre class="code-content">
+<span class="comment"># create_embeddings.py</span>
+<span class="keyword">from</span> <span class="variable">langchain.text_splitter</span> <span class="keyword">import</span> <span class="function">RecursiveCharacterTextSplitter</span>
+
+<span class="variable">text_splitter</span> <span class="operator">=</span> <span class="function">RecursiveCharacterTextSplitter</span><span class="operator">(</span>
+    <span class="keyword">chunk_size</span><span class="operator">=</span><span class="number">500</span><span class="operator">,</span>        <span class="comment"># Max size of each chunk</span>
+    <span class="keyword">chunk_overlap</span><span class="operator">=</span><span class="number">50</span><span class="operator">,</span>      <span class="comment"># Number of overlapping characters between chunks</span>
+    <span class="keyword">length_function</span><span class="operator">=</span><span class="function">len</span><span class="operator">,</span>
+    <span class="keyword">separators</span><span class="operator">=[</span><span class="string">"\n\n"</span><span class="operator">,</span> <span class="string">"\n"</span><span class="operator">,</span> <span class="string">" "</span><span class="operator">,</span> <span class="string">""</span><span class="operator">]</span> <span class="comment"># Prioritize splitting by newlines, sentences</span>
+<span class="operator">)</span>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

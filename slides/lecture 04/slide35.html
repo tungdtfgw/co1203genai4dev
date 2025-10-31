@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini - Implicit Caching</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Gemini - Implicit Caching</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            Implicit caching is automatic and requires no configuration.
+                        </li>
+                        <li>
+                            It works similarly to OpenAI's approach, caching the beginning of prompts.
+                        </li>
+                        <li>
+                            Requires a minimum of 1024 tokens to activate caching.
+                        </li>
+                        <li>
+                            Cache TTL is about 5 minutes.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>gemini_implicit_caching.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="variable">client</span> <span class="operator">=</span> <span class="variable">genai</span>.<span class="function">Client</span>(<span class="variable">api_key</span><span class="operator">=</span><span class="function">get_key</span>())
+<span class="variable">long_prompt</span> <span class="operator">=</span> <span class="function">get_long_prompt</span>()
+
+<span class="function">print</span>(<span class="string">f"Long prompt length: {len(long_prompt)} characters\n"</span>)
+
+<span class="comment"># Question 1: Long prompt + Charles Dickens</span>
+<span class="function">print</span>(<span class="string">"Question 1: Long prompt + Analyse Charles Dickens"</span>)
+<span class="variable">question1</span> <span class="operator">=</span> <span class="string">"Analyse the writing style of Charles Dickens."</span>
+<span class="variable">full_message1</span> <span class="operator">=</span> <span class="string">f"{long_prompt}\n\n{question1}"</span>
+
+<span class="variable">response1</span> <span class="operator">=</span> <span class="variable">client</span>.<span class="variable">models</span>.<span class="function">generate_content</span>(
+    <span class="variable">model</span><span class="operator">=</span><span class="string">'gemini-2.5-flash'</span>,
+    <span class="variable">contents</span><span class="operator">=</span><span class="variable">full_message1</span>
+)
+
+<span class="function">print</span>(<span class="string">f"Response: {response1.text[:100]}..."</span>)
+<span class="function">display_usage_info</span>(<span class="variable">response1</span>, <span class="string">"Question 1"</span>)
+
+<span class="comment"># Question 2: Long prompt + William Shakespeare</span>
+<span class="function">print</span>(<span class="string">"\nQuestion 2: Long prompt + Analyse William Shakespeare"</span>)
+<span class="variable">question2</span> <span class="operator">=</span> <span class="string">"Analyse the writing style of William Shakespeare."</span>
+<span class="variable">full_message2</span> <span class="operator">=</span> <span class="string">f"{long_prompt}\n\n{question2}"</span>
+
+<span class="variable">response2</span> <span class="operator">=</span> <span class="variable">client</span>.<span class="variable">models</span>.<span class="function">generate_content</span>(
+    <span class="variable">model</span><span class="operator">=</span><span class="string">'gemini-2.5-flash'</span>,
+    <span class="variable">contents</span><span class="operator">=</span><span class="variable">full_message2</span>
+)
+
+<span class="function">print</span>(<span class="string">f"Response: {response2.text[:100]}..."</span>)
+<span class="function">display_usage_info</span>(<span class="variable">response2</span>, <span class="string">"Question 2"</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

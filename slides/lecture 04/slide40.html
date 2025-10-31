@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LangChain Caching Implementation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">LangChain Caching Implementation</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            Output Caching Strategy:
+                            LangChain implements output caching through multiple cache types
+                        </li>
+                        <li>
+                            Cache Hit Benefits:
+                            Stores and retrieves complete prompt-response pairs without calling LLM
+                        </li>
+                        <li>
+                            Multiple Cache Types:
+                            Supports in-memory, Redis, SQLite for different deployment scenarios
+                        </li>
+                        <li>
+                            Matching Strategies:
+                            Provides both exact matching and semantic matching capabilities
+                        </li>
+                        <li>
+                            Performance Gains:
+                            Dramatic latency reduction on cache hits (near-zero response time)
+                        </li>
+                        <li>
+                            Easy Integration:
+                            Simple API to enable caching with minimal code changes
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>langchain_cache_example.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="keyword">import</span> <span class="variable">getpass</span>
+<span class="keyword">import</span> <span class="variable">os</span>
+
+<span class="keyword">if</span> <span class="keyword">not</span> <span class="variable">os</span>.<span class="variable">environ</span>.<span class="function">get</span>(<span class="string">"GOOGLE_API_KEY"</span>):
+  <span class="variable">os</span>.<span class="variable">environ</span>[<span class="string">"GOOGLE_API_KEY"</span>] <span class="operator">=</span> <span class="function">getpass</span>.<span class="function">getpass</span>(<span class="string">"Enter API key for Google Gemini: "</span>)
+
+<span class="keyword">from</span> <span class="variable">langchain.chat_models</span> <span class="keyword">import</span> <span class="function">init_chat_model</span>
+
+<span class="variable">llm</span> <span class="operator">=</span> <span class="function">init_chat_model</span>(<span class="string">"gemini-2.5-flash"</span>, <span class="variable">model_provider</span><span class="operator">=</span><span class="string">"google_genai"</span>)
+
+<span class="comment">%%time</span>
+<span class="keyword">from</span> <span class="variable">langchain_core.caches</span> <span class="keyword">import</span> <span class="function">InMemoryCache</span>
+
+<span class="function">set_llm_cache</span>(<span class="function">InMemoryCache</span>())
+
+<span class="comment"># The first time, it is not yet in cache, so it should take longer</span>
+<span class="variable">llm</span>.<span class="function">invoke</span>(<span class="string">"Tell me a joke"</span>)
+
+<span class="comment"># Example output</span>
+<span class="comment"># CPU times: user 645 ms, sys: 214 ms, total: 859 ms</span>
+<span class="comment"># Wall time: 829 ms</span>
+
+<span class="comment">%%time</span>
+<span class="comment"># The second time it is, so it goes faster</span>
+<span class="variable">llm</span>.<span class="function">invoke</span>(<span class="string">"Tell me a joke"</span>)
+
+<span class="comment"># Example output</span>
+<span class="comment"># CPU times: user 822 µs, sys: 288 µs, total: 1.11 ms</span>
+<span class="comment"># Wall time: 1.06 ms</span></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Case: Mathematical Calculations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Use Case: Mathematical Calculations</h1>
+            
+            <ul class="content-list wide compact template6-list">
+                <li class="slide-in-center">
+                    <div class="main-content">
+                        <strong>A user asks for a complex calculation that is prone to errors if done by text reasoning alone.</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.1s;">"Calculate the factorial of 15 and then tell me the sum of its digits."</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.3s;">
+                    <div class="main-content">
+                        <strong>The model uses the Code Execution tool to get a precise answer.</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.35s;">First, it runs `math.factorial(15)` to get the exact number.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.4s;">Second, it runs code to convert the result to a string and sum its digits.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.45s;">Finally, it presents the correct, verified answer to the user.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

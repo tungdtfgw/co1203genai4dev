@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude - Prompt Caching</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Claude - Prompt Caching</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            Claude's prompt caching reduces costs by caching frequent prompt prefixes.
+                        </li>
+                        <li>
+                            Use cache_control to mark cacheable content.
+                        </li>
+                        <li>
+                            Cached content persists for the duration of the conversation.
+                        </li>
+                        <li>
+                            Particularly useful for large documents or system prompts.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>claude_prompt_caching.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="variable">client</span> <span class="operator">=</span> <span class="variable">anthropic</span>.<span class="function">Anthropic</span>()
+
+<span class="variable">response</span> <span class="operator">=</span> <span class="variable">client</span>.<span class="variable">messages</span>.<span class="function">create</span>(
+    <span class="variable">model</span><span class="operator">=</span><span class="string">"claude-opus-4-1-20250805"</span>,
+    <span class="variable">max_tokens</span><span class="operator">=</span><span class="number">1024</span>,
+    <span class="variable">system</span><span class="operator">=</span>[
+      {
+        <span class="string">"type"</span>: <span class="string">"text"</span>,
+        <span class="string">"text"</span>: <span class="string">"You are an AI assistant tasked with analyzing literary works. Your goal is to provide insightful commentary on themes, characters, and writing style.\n"</span>,
+      },
+      {
+        <span class="string">"type"</span>: <span class="string">"text"</span>,
+        <span class="string">"text"</span>: <span class="string">"&lt;the entire contents of 'Pride and Prejudice'&gt;"</span>,
+        <span class="string">"cache_control"</span>: {<span class="string">"type"</span>: <span class="string">"ephemeral"</span>}
+      }
+    ],
+    <span class="variable">messages</span><span class="operator">=</span>[{<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: <span class="string">"Analyze the major themes in 'Pride and Prejudice'."</span>}],
+)
+<span class="function">print</span>(<span class="variable">response</span>.<span class="variable">usage</span>.<span class="function">model_dump_json</span>())
+
+<span class="comment"># Call the model again with the same inputs up to the cache checkpoint</span>
+<span class="variable">response</span> <span class="operator">=</span> <span class="variable">client</span>.<span class="variable">messages</span>.<span class="function">create</span>(.....)
+<span class="function">print</span>(<span class="variable">response</span>.<span class="variable">usage</span>.<span class="function">model_dump_json</span>())</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Outline - Greenwich Presentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Session Outline</h1>
+            
+            <div class="toc-grid">
+                <div class="toc-item slide-in-left" onclick="goToSlide('slide03.html')">
+                    <div class="toc-number">01</div>
+                    <div class="toc-title-text">Introduction to Gemini API</div>
+                </div>
+                
+                <div class="toc-item slide-in-left" style="animation-delay: 0.2s;" onclick="goToSlide('slide04.html')">
+                    <div class="toc-number">02</div>
+                    <div class="toc-title-text">Model Variants & API Key</div>
+                </div>
+                
+                <div class="toc-item slide-in-right" onclick="goToSlide('slide07.html')">
+                    <div class="toc-number">03</div>
+                    <div class="toc-title-text">Installation & First Request</div>
+                </div>
+                
+                <div class="toc-item slide-in-right" style="animation-delay: 0.2s;" onclick="goToSlide('slide10.html')">
+                    <div class="toc-number">04</div>
+                    <div class="toc-title-text">Stateless vs Stateful Chat</div>
+                </div>
+                
+                <div class="toc-item slide-in-left" style="animation-delay: 0.4s;" onclick="goToSlide('slide20.html')">
+                    <div class="toc-number">05</div>
+                    <div class="toc-title-text">Building a Chat App</div>
+                </div>
+                
+                <div class="toc-item slide-in-right" style="animation-delay: 0.4s;" onclick="goToSlide('slide27.html')">
+                    <div class="toc-number">06</div>
+                    <div class="toc-title-text">Best Practices & Summary</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

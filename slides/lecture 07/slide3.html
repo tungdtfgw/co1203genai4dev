@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Architecture: Client-Server Model</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">MCP Architecture: Client-Server Model</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template2-list">
+                        <li>
+                            <strong>MCP Server:</strong> Lightweight programs that wrap external tools, resources, and prompts (APIs, databases, local files).
+                        </li>
+                        <li>
+                            They expose these capabilities in a standardized format, acting as a bridge to the external system.
+                        </li>
+                        <li>
+                            Can be built in various languages (Python, TypeScript) and communicate via <code>stdio</code> or <code>HTTP</code>.
+                        </li>
+                        <li>
+                            <strong>MCP Client:</strong> Part of a host application (e.g., Claude Desktop, IDE) that manages connections to MCP servers.
+                        </li>
+                        <li>
+                            It handles connection management, capability discovery, and request/response forwarding.
+                        </li>
+                        <li>
+                            <strong>MCP Protocol:</strong> The standardized layer between clients and servers, ensuring seamless and consistent communication, much like a "USB-C cable."
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <img src="images/mcp-general-architecture.png" alt="MCP General Architecture Diagram" class="panel-image">
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>
+
+

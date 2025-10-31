@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table of Contents</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        <div class="slide-content center-vertical">
+            <h1 class="slide-title">Table of Contents</h1>
+            <div class="toc-grid slide-in-center">
+                <div class="toc-item" onclick="window.parent.__slidesPlayer.goToSlide(3)">
+                    <span class="toc-number">1</span>
+                    <h3 class="toc-title">Introduction to AI Agents</h3>
+                </div>
+                <div class="toc-item" onclick="window.parent.__slidesPlayer.goToSlide(7)">
+                    <span class="toc-number">2</span>
+                    <h3 class="toc-title">Core Components & Architecture</h3>
+                </div>
+                <div class="toc-item" onclick="window.parent.__slidesPlayer.goToSlide(11)">
+                    <span class="toc-number">3</span>
+                    <h3 class="toc-title">Applications & Use Cases</h3>
+                </div>
+                <div class="toc-item" onclick="window.parent.__slidesPlayer.goToSlide(17)">
+                    <span class="toc-number">4</span>
+                    <h3 class="toc-title">Implementation & Future Trends</h3>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    <script src="presentation.js"></script>
+</body>
+</html>

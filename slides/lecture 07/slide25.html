@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example 1: File Manager Server (Overview)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Example 1: File Manager Server (Overview)</h1>
+            
+            <ul class="content-list wide compact template1-list">
+                <li class="slide-in-center">
+                    <strong>This server exposes basic file system operations as tools for an AI.</strong>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.2s;">
+                    <strong>It uses a common and clean pattern where tools and their logic are defined using decorators from the `mcp.server` library.</strong>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.4s;">
+                    <strong>Key Structure:</strong>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.6s;">
+                    <strong>`@server.list_tools()`:</strong> A decorator for the function that defines all available tools.
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.8s;">
+                    <strong>`@server.call_tool()`:</strong> A decorator for the function that contains the implementation logic for all tools.
+                </li>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>
+
+

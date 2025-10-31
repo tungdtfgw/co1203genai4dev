@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 15 — Fine-Tuning Methods: An Overview</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Fine-Tuning Methods: An Overview</h1>
+      
+      <div class="two-panel">
+        <div class="panel slide-in-left">
+          <img src="images/finetune_methods.png" alt="Fine-tuning methods diagram" class="panel-image">
+        </div>
+        
+        <div class="panel panel-text slide-in-right">
+          <ul class="content-list template3-list">
+            <li>
+              There are two primary approaches to fine-tuning an LLM.
+            </li>
+            <li>
+              <strong>Full Fine-Tuning:</strong> Updates all of the model's weights.
+            </li>
+            <li>
+              <strong>Parameter-Efficient Fine-Tuning (PEFT):</strong> Updates only a small subset of the model's parameters.
+            </li>
+            <li>
+              PEFT methods are now the most common due to their efficiency.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

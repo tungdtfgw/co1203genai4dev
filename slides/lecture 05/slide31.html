@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Performance & Troubleshooting</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Performance & Troubleshooting</h1>
+      <ul class="content-list wide compact template6-list">
+        <li class="slide-in-center">
+          <div class="main-content">
+            <strong>How to Optimize</strong>
+          </div>
+          <ul class="sub-list">
+            <li class="slide-in-center" style="animation-delay: 0.1s;"><strong>Embedding Model:</strong> <code>BAAI/bge-m3</code> is a good choice for quality and multilingual support.</li>
+            <li class="slide-in-center" style="animation-delay: 0.15s;"><strong>FAISS Index Type:</strong> <code>IndexFlatL2</code> is suitable for small datasets, but consider <code>IndexIVFFlat</code> for larger ones to speed up searches.</li>
+            <li class="slide-in-center" style="animation-delay: 0.2s;"><strong>Chunking Strategy:</strong> Adjusting <code>chunk_size</code> and <code>chunk_overlap</code> can significantly improve retrieval quality.</li>
+          </ul>
+        </li>
+        <li class="slide-in-center" style="animation-delay: 0.3s;">
+          <div class="main-content">
+            <strong>Common Issues</strong>
+          </div>
+          <ul class="sub-list">
+            <li class="slide-in-center" style="animation-delay: 0.35s;"><strong>Memory Errors:</strong> Reduce the <code>batch_size</code> during embedding generation.</li>
+            <li class="slide-in-center" style="animation-delay: 0.4s;"><strong>Poor Results:</strong> Experiment with different chunking strategies or refine the prompt.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 26 - tut02_3agents.py Guardrail Logic</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Asynchronous Guardrail Flow</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li><strong>Async evaluation:</strong> guardrail agent runs with <code>await Runner.run(...)</code>.</li>
+                        <li><strong>Structured result:</strong> <code>final_output_as(HomeworkOutput)</code> enforces typed data.</li>
+                        <li><strong>Tripwire control:</strong> flips to <code>True</code> whenever the input is not homework.</li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>tut02_3agents.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block" style="max-height: 320px; overflow: auto;"><span class="comment"># tut02_3agents.py - guardrail coroutine</span>
+<span class="keyword">async</span> <span class="keyword">def</span> <span class="function">homework_guardrail</span>(<span class="variable">ctx</span>, <span class="variable">_agent</span>, <span class="variable">input_data</span>):
+    <span class="comment"># Run the guardrail agent to analyze the input</span>
+    <span class="variable">result</span> = <span class="keyword">await</span> <span class="variable">Runner</span>.<span class="function">run</span>(
+        <span class="variable">guardrail_agent</span>,
+        <span class="variable">input_data</span>,
+        <span class="variable">context</span>=<span class="variable">ctx</span>.<span class="variable">context</span>,
+    )
+
+    <span class="comment"># Extract the structured output</span>
+    <span class="variable">final_output</span> = <span class="variable">result</span>.<span class="function">final_output_as</span>(<span class="variable">HomeworkOutput</span>)
+
+    <span class="comment"># Guardrail triggers when the question is not homework</span>
+    <span class="keyword">return</span> <span class="variable">GuardrailFunctionOutput</span>(
+        <span class="variable">output_info</span>=<span class="variable">final_output</span>,
+        <span class="variable">tripwire_triggered</span>=<span class="keyword">not</span> <span class="variable">final_output</span>.<span class="variable">is_homework</span>,
+    )</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

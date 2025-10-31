@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini - Explicit Caching</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Gemini - Explicit Caching</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            Explicit caching allows developers to control cache behavior and TTL.
+                        </li>
+                        <li>
+                            It provides more control over cache invalidation and specific caching requirements.
+                        </li>
+                        <li>
+                            Developers can specify cache TTL and cache keys.
+                        </li>
+                        <li>
+                            This is useful for applications that need to manage cache invalidation.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>gemini_explicit_caching.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="comment"># Create explicit cache with Gemini 2.0 Flash</span>
+<span class="variable">cache</span> <span class="operator">=</span> <span class="variable">client</span>.<span class="variable">caches</span>.<span class="function">create</span>(
+    <span class="variable">model</span><span class="operator">=</span><span class="string">'gemini-2.0-flash'</span>,
+    <span class="variable">config</span><span class="operator">=</span><span class="variable">types</span>.<span class="function">CreateCachedContentConfig</span>(
+        <span class="variable">display_name</span><span class="operator">=</span><span class="string">'PDF document cache'</span>,
+        <span class="variable">system_instruction</span><span class="operator">=</span>(
+            <span class="string">'You are an expert document analyzer. Answer questions '</span>
+            <span class="string">'based only on the content of the provided PDF document. '</span>
+        ),
+        <span class="variable">contents</span><span class="operator">=</span>[<span class="variable">pdf_file</span>],
+        <span class="variable">ttl</span><span class="operator">=</span><span class="string">"3600s"</span>,  <span class="comment"># Cache for 1 hour</span>
+    )
+)
+
+<span class="function">print</span>(<span class="string">f"Cache created successfully: {cache.name}"</span>)
+<span class="function">print</span>(<span class="string">f"Cache TTL: {cache.ttl}"</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

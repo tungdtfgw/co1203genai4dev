@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add MCP Server to Cursor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Add MCP Server to Cursor</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            <strong>Configure <code>settings.json</code>:</strong>
+                            Cursor, an AI-first code editor, natively supports MCP for providing context and tools.
+                        </li>
+                        <li>
+                            You add servers by modifying the <code>mcp.servers</code> object in Cursor's <code>settings.json</code>.
+                        </li>
+                        <li>
+                            <strong>Server Definition:</strong>
+                            For each server, you provide a key (e.g., "docker") and a value specifying the launch command.
+                        </li>
+                        <li>
+                            The command is an array containing the executable and any necessary arguments.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>.cursor-settings.json</span>
+                            <span class="code-language">JSON</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="comment">// In .cursor-settings.json</span>
+{
+  <span class="string">"mcp.servers"</span>: {
+    <span class="string">"docker"</span>: [
+      <span class="string">"/path/to/your/venvs/mcp-docker/bin/mcp-server-docker"</span>
+    ],
+    <span class="string">"another-server"</span>: [
+      <span class="string">"node"</span>,
+      <span class="string">"/path/to/another/server.js"</span>
+    ]
+  }
+}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>
+
+

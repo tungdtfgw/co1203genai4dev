@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Example: Inspecting Execution Logs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Code Example: Inspecting Execution Logs</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            Let's expand on the previous example to see what the model did behind the scenes.
+                        </li>
+                        <li>
+                            We will access the `response.parts` to view the tool calls.
+                        </li>
+                        <li>
+                            This reveals the intermediate steps the model took.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>inspect_execution_logs.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="keyword">import</span> <span class="variable">google.generativeai</span> <span class="keyword">as</span> <span class="variable">genai</span>
+
+<span class="comment"># ... (previous model and tool setup) ...</span>
+
+<span class="variable">prompt</span> <span class="operator">=</span> <span class="string">"What is the area of a circle with a radius of 12.34 inches? Use π = 3.14159."</span>
+<span class="variable">response</span> <span class="operator">=</span> <span class="variable">chat</span>.<span class="function">send_message</span>(<span class="variable">prompt</span>)
+
+<span class="comment"># Iterate through the response parts to find tool usage</span>
+<span class="keyword">for</span> <span class="variable">part</span> <span class="keyword">in</span> <span class="variable">response</span>.<span class="variable">parts</span>:
+    <span class="keyword">if</span> <span class="variable">part</span>.<span class="variable">function_call</span> <span class="keyword">and</span> <span class="variable">part</span>.<span class="variable">function_call</span>.<span class="variable">name</span> <span class="operator">==</span> <span class="string">"code_execution"</span>:
+        <span class="function">print</span>(<span class="string">"--- Model Decided to Execute Code ---"</span>)
+        <span class="function">print</span>(<span class="string">f"Code Executed:\n{part.function_call.args['code']}"</span>)
+        
+<span class="comment"># You would then find the corresponding function response part</span>
+<span class="comment"># to see the output the model received before generating the final text.</span>
+<span class="function">print</span>(<span class="string">f"\nFinal Answer:\n{response.text}"</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

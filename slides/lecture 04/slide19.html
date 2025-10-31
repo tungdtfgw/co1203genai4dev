@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Example: Handling the Function Call</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Code Example: Handling the Function Call</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            This is the core logic: sending a prompt and handling the model's request to call our function.
+                        </li>
+                        <li>
+                            If the model returns a `FunctionCall`, we execute our local function.
+                        </li>
+                        <li>
+                            We then send the output back to the model so it can formulate a final answer.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>handle_function_call.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="comment"># ... (after starting the chat) ...</span>
+
+<span class="variable">prompt</span> <span class="operator">=</span> <span class="string">"What is the weather like in London?"</span>
+<span class="variable">response</span> <span class="operator">=</span> <span class="variable">chat</span>.<span class="function">send_message</span>(<span class="variable">prompt</span>)
+
+<span class="comment"># Check if the model wants to call a function</span>
+<span class="keyword">if</span> <span class="variable">response</span>.<span class="variable">parts</span>[<span class="number">0</span>].<span class="variable">function_call</span>:
+    <span class="variable">function_call</span> <span class="operator">=</span> <span class="variable">response</span>.<span class="variable">parts</span>[<span class="number">0</span>].<span class="variable">function_call</span>
+    <span class="keyword">if</span> <span class="variable">function_call</span>.<span class="variable">name</span> <span class="operator">==</span> <span class="string">"get_current_weather"</span>:
+        <span class="comment"># Call our actual Python function</span>
+        <span class="variable">location</span> <span class="operator">=</span> <span class="variable">function_call</span>.<span class="variable">args</span>[<span class="string">'location'</span>]
+        <span class="variable">weather_result</span> <span class="operator">=</span> <span class="function">get_current_weather</span>(<span class="variable">location</span><span class="operator">=</span><span class="variable">location</span>)
+        
+        <span class="comment"># Send the result back to the model</span>
+        <span class="variable">response</span> <span class="operator">=</span> <span class="variable">chat</span>.<span class="function">send_message</span>(
+            <span class="variable">genai</span>.<span class="function">Part</span>(
+                <span class="variable">function_response</span><span class="operator">=</span><span class="variable">genai</span>.<span class="function">FunctionResponse</span>(
+                    <span class="variable">name</span><span class="operator">=</span><span class="string">"get_current_weather"</span>,
+                    <span class="variable">response</span><span class="operator">=</span>{<span class="string">"weather"</span>: <span class="variable">weather_result</span>}
+                )
+            )
+        )
+
+<span class="comment"># The final response from the model will contain the natural language answer</span>
+<span class="function">print</span>(<span class="variable">response</span>.<span class="variable">text</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

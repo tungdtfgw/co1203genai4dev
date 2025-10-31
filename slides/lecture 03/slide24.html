@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extract-then-Ask Example (tutorial06.py)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Extract-then-Ask Example (tutorial06.py)</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            <strong>Extract text & ask questions:</strong>
+                            Use PyPDF2 to extract text from PDF and create a chat session
+                        </li>
+                        <li>
+                            <strong>Create a system prompt and chat session:</strong>
+                            Set up a chat with the extracted text as context
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>extract_then_ask.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="keyword">from</span> <span class="variable">google</span> <span class="keyword">import</span> <span class="variable">genai</span>
+<span class="keyword">from</span> <span class="variable">PyPDF2</span> <span class="keyword">import</span> <span class="variable">PdfReader</span>
+<span class="keyword">from</span> <span class="variable">intro_gemini.utils</span> <span class="keyword">import</span> <span class="variable">get_key</span>
+<span class="keyword">from</span> <span class="variable">google.genai.types</span> <span class="keyword">import</span> <span class="variable">GenerateContentConfig</span>
+
+<span class="comment"># Extract text from a PDF file</span>
+<span class="keyword">def</span> <span class="function">extract_text</span>(<span class="variable">pdf_path</span>):
+    <span class="variable">reader</span> <span class="operator">=</span> <span class="function">PdfReader</span>(<span class="variable">pdf_path</span>)
+    <span class="variable">text</span> <span class="operator">=</span> <span class="string">""</span>
+    <span class="keyword">for</span> <span class="variable">page</span> <span class="keyword">in</span> <span class="variable">reader</span>.<span class="variable">pages</span>:
+        <span class="variable">page_text</span> <span class="operator">=</span> <span class="variable">page</span>.<span class="function">extract_text</span>()
+        <span class="keyword">if</span> <span class="variable">page_text</span>:
+            <span class="variable">text</span> <span class="operator">+=</span> <span class="variable">page_text</span> <span class="operator">+</span> <span class="string">"\n"</span>
+    <span class="keyword">return</span> <span class="variable">text</span>
+
+<span class="comment"># Initialize Gemini client & chat</span>
+<span class="variable">api_key</span> <span class="operator">=</span> <span class="function">get_key</span>()
+<span class="variable">client</span> <span class="operator">=</span> <span class="function">genai.Client</span>(<span class="variable">api_key</span><span class="operator">=</span><span class="variable">api_key</span>)
+<span class="variable">document_text</span> <span class="operator">=</span> <span class="function">extract_text</span>(<span class="string">'sample.pdf'</span>)
+<span class="variable">system_prompt</span> <span class="operator">=</span> (
+    <span class="string">"You are an AI assistant. Answer questions based ONLY on the following\n"</span>
+    <span class="string">"document content. If information is not in the document, say so clearly.\n\n"</span>
+    <span class="string">f"Document content:\n{document_text}"</span>
+)
+<span class="variable">config</span> <span class="operator">=</span> <span class="function">GenerateContentConfig</span>(<span class="variable">system_instruction</span><span class="operator">=</span><span class="variable">system_prompt</span>)
+<span class="variable">chat</span> <span class="operator">=</span> <span class="variable">client</span>.<span class="variable">chats</span>.<span class="function">create</span>(<span class="variable">model</span><span class="operator">=</span><span class="string">'gemini-2.0-flash'</span>, <span class="variable">config</span><span class="operator">=</span><span class="variable">config</span>)
+
+<span class="comment"># Ask a question</span>
+<span class="variable">response</span> <span class="operator">=</span> <span class="variable">chat</span>.<span class="function">send_message</span>(<span class="string">"What is the main topic of this report?"</span>)
+<span class="function">print</span>(<span class="variable">response</span>.<span class="variable">text</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

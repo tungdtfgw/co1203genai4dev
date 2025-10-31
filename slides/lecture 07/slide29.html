@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySQL Server: Logic & Dispatch Pattern</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">MySQL Server: Logic & Dispatch Pattern</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            This server uses a slightly different but effective pattern for tool logic.
+                        </li>
+                        <li>
+                            The main `@server.call_tool` function acts as a simple dispatcher.
+                        </li>
+                        <li>
+                            It calls separate, dedicated `async` handler functions for each tool (e.g., `handle_list_tables`, `handle_select_query`). This keeps the code organized and easy to maintain.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>mysql_mcp_server.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block" style="max-height: 320px;"><span class="comment"># From mysql_mcp_server.py</span>
+
+<span class="keyword">async def</span> <span class="function">handle_list_tables</span>() <span class="operator">-></span> <span class="variable">list</span>[<span class="variable">TextContent</span>]:
+    <span class="comment"># ... logic to execute "SHOW TABLES" ...</span>
+
+<span class="keyword">async def</span> <span class="function">handle_select_query</span>(<span class="variable">query</span>: <span class="variable">str</span>) <span class="operator">-></span> <span class="variable">list</span>[<span class="variable">TextContent</span>]:
+    <span class="comment"># ... logic to execute a SELECT query ...</span>
+
+<span class="keyword">@server.call_tool()</span>
+<span class="keyword">async def</span> <span class="function">call_tool</span>(<span class="variable">name</span>: <span class="variable">str</span>, <span class="variable">arguments</span>: <span class="variable">dict</span>) <span class="operator">-></span> <span class="variable">list</span>[<span class="variable">TextContent</span>]:
+    <span class="string">"""Dispatches to appropriate handler functions"""</span>
+    <span class="keyword">if</span> <span class="variable">name</span> <span class="operator">==</span> <span class="string">"list_tables"</span>:
+        <span class="keyword">return</span> <span class="keyword">await</span> <span class="function">handle_list_tables</span>()
+    <span class="keyword">elif</span> <span class="variable">name</span> <span class="operator">==</span> <span class="string">"select_query"</span>:
+        <span class="variable">query</span> <span class="operator">=</span> <span class="variable">arguments</span>[<span class="string">"query"</span>]
+        <span class="keyword">return</span> <span class="keyword">await</span> <span class="function">handle_select_query</span>(<span class="variable">query</span>)
+    <span class="comment"># ... other dispatch calls ...</span></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>
+

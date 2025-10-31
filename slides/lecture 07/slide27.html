@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Manager: Implementing Logic (@server.call_tool)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">File Manager: Implementing Logic (`@server.call_tool`)</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            This single function acts as a router for all tool calls.
+                        </li>
+                        <li>
+                            It checks the `name` of the requested tool and uses an `if/elif/else` block to execute the correct logic.
+                        </li>
+                        <li>
+                            Robust error handling (`try...except`) is crucial for dealing with file system issues like "File Not Found".
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>file_manager_server.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block" style="max-height: 320px;"><span class="comment"># From file_manager_server.py</span>
+
+<span class="keyword">@server.call_tool()</span>
+<span class="keyword">async def</span> <span class="function">call_tool</span>(<span class="variable">name</span>: <span class="variable">str</span>, <span class="variable">arguments</span>: <span class="variable">dict</span>) <span class="operator">-></span> <span class="variable">list</span>[<span class="variable">TextContent</span>]:
+    <span class="keyword">if</span> <span class="variable">name</span> <span class="operator">==</span> <span class="string">"read_file"</span>:
+        <span class="variable">file_path</span> <span class="operator">=</span> <span class="variable">arguments</span>[<span class="string">"path"</span>]
+        <span class="keyword">try</span>:
+            <span class="keyword">with</span> <span class="function">open</span>(<span class="variable">file_path</span>, <span class="string">"r"</span>, <span class="keyword">encoding</span><span class="operator">=</span><span class="string">"utf-8"</span>) <span class="keyword">as</span> <span class="variable">f</span>:
+                <span class="variable">content</span> <span class="operator">=</span> <span class="variable">f</span>.<span class="function">read</span>()
+            <span class="keyword">return</span> [<span class="function">TextContent</span>(<span class="keyword">text</span><span class="operator">=</span><span class="string">f"Content:\n{content}"</span>)]
+        <span class="keyword">except</span> <span class="variable">FileNotFoundError</span>:
+            <span class="keyword">return</span> [<span class="function">TextContent</span>(<span class="keyword">text</span><span class="operator">=</span><span class="string">f"File not found: {file_path}"</span>)]
+        <span class="comment"># ... more error handling ...</span>
+
+    <span class="keyword">elif</span> <span class="variable">name</span> <span class="operator">==</span> <span class="string">"write_file"</span>:
+        <span class="comment"># ... implementation for writing files ...</span>
+    
+    <span class="comment"># ... other tool implementations ...</span></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

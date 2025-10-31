@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Comparison</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Performance Comparison: Before vs After Fine-tuning</h1>
+            
+            <div class="image-focus">
+                <img src="images/performance_comparison.png" alt="Performance Comparison Chart" class="main-image slide-in-left">
+                
+                <div class="image-description slide-in-right">
+                    <p>
+                        <strong style="color: var(--primary-orange);">Fine-tuning Impact:</strong> 
+                        Fine-tuning dramatically improved model performance from 75.0% to 89.9% accuracy - a 19.9% improvement with just 3 epochs of training. The training loss decreased smoothly from 0.7 to 0.2 across epochs, demonstrating efficient learning without overfitting.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

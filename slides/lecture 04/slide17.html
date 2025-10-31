@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Example: Defining a Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Code Example: Defining a Tool</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            Here is how you define a function that the model can call.
+                        </li>
+                        <li>
+                            We will create a simple tool for finding the current weather.
+                        </li>
+                        <li>
+                            The function declaration includes a description of what it does and its parameters, which is crucial for the model to understand how to use it.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>define_tool.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="keyword">import</span> <span class="variable">google.generativeai</span> <span class="keyword">as</span> <span class="variable">genai</span>
+
+<span class="comment"># Define the function for the model to use</span>
+<span class="keyword">def</span> <span class="function">get_current_weather</span>(<span class="variable">location</span>: <span class="variable">str</span>):
+    <span class="string">"""Gets the current weather in a given location."""</span>
+    <span class="comment"># In a real app, this would call a weather API</span>
+    <span class="keyword">if</span> <span class="string">"tokyo"</span> <span class="keyword">in</span> <span class="variable">location</span>.<span class="function">lower</span>():
+        <span class="keyword">return</span> <span class="string">"15 degrees Celsius and cloudy"</span>
+    <span class="keyword">elif</span> <span class="string">"london"</span> <span class="keyword">in</span> <span class="variable">location</span>.<span class="function">lower</span>():
+        <span class="keyword">return</span> <span class="string">"10 degrees Celsius and raining"</span>
+    <span class="keyword">else</span>:
+        <span class="keyword">return</span> <span class="string">"22 degrees Celsius and sunny"</span>
+
+<span class="comment"># Declare it as a tool for the model</span>
+<span class="variable">weather_tool</span> <span class="operator">=</span> <span class="variable">genai</span>.<span class="function">Tool</span>(
+    <span class="variable">function_declarations</span><span class="operator">=</span>[
+        <span class="variable">genai</span>.<span class="function">FunctionDeclaration</span>(
+            <span class="variable">name</span><span class="operator">=</span><span class="string">"get_current_weather"</span>,
+            <span class="variable">description</span><span class="operator">=</span><span class="string">"Get the current weather in a given location"</span>,
+            <span class="variable">parameters</span><span class="operator">=</span>{
+                <span class="string">"type"</span>: <span class="string">"object"</span>,
+                <span class="string">"properties"</span>: {
+                    <span class="string">"location"</span>: {
+                        <span class="string">"type"</span>: <span class="string">"string"</span>,
+                        <span class="string">"description"</span>: <span class="string">"The city and state, e.g. San Francisco, CA"</span>
+                    }
+                }
+            }
+        )
+    ]
+)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

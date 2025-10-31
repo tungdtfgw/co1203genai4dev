@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template 5 - Text Left, Code Right</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Python GenAI Chat Implementation</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            Initialize GenAI Client:
+                            Create client instance with API key for authentication
+                        </li>
+                        <li>
+                            Create Chat Session:
+                            Set up chat with Gemini 2.0 Flash model for conversation
+                        </li>
+                        <li>
+                            Configure System Prompt:
+                            Define AI behavior with specific instructions and constraints
+                        </li>
+                        <li>
+                            Interactive Loop:
+                            Handle user input and generate AI responses continuously
+                        </li>
+                        <li>
+                            Exit Handling:
+                            Provide clean exit options with 'exit' or 'quit' commands
+                        </li>
+                        <li>
+                            Response Display:
+                            Format and present AI responses with clear user/AI labels
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>chat_example.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="variable">client</span> <span class="operator">=</span> <span class="function">genai.Client</span>(<span class="keyword">api_key</span><span class="operator">=</span><span class="function">get_key</span>())
+<span class="variable">chat</span> <span class="operator">=</span> <span class="variable">client</span>.<span class="function">chats.create</span>(<span class="keyword">model</span><span class="operator">=</span><span class="string">'gemini-2.0-flash'</span>)
+
+<span class="variable">chat</span>.<span class="function">send_message</span>(<span class="keyword">message</span><span class="operator">=</span><span class="string">"You are a cat. You will answer questions as a cat. Convert words to meow, meoow, meooww, etc. based on the length of the word. ONLY MEOWS ALLOWED. No matter what the question is, you must respond with meows only."</span>)
+
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    <span class="variable">question</span> <span class="operator">=</span> <span class="function">input</span>(<span class="string">'[User]: '</span>)
+    <span class="keyword">if</span> <span class="variable">question</span> <span class="operator">==</span> <span class="string">'exit'</span> <span class="keyword">or</span> <span class="variable">question</span> <span class="operator">==</span> <span class="string">'quit'</span>:
+        <span class="keyword">break</span>
+    <span class="variable">response</span> <span class="operator">=</span> <span class="variable">chat</span>.<span class="function">send_message</span>(<span class="keyword">message</span><span class="operator">=</span><span class="variable">question</span>)
+    <span class="function">print</span>(<span class="string">'[GenAI]:'</span>, <span class="variable">response</span>.<span class="keyword">text</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

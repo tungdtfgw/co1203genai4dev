@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Audio Features</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Advanced Audio Features</h1>
+            
+            <ul class="content-list wide compact template6-list template6-grid-2row">
+                <li class="slide-in-center">
+                    <div class="main-content">
+                        <strong>Advanced audio features</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.1s;">Refer to timestamps in prompts (e.g., 02:30–03:29)</li>
+                        <li class="slide-in-center" style="animation-delay: 0.15s;">Count tokens in audio files using count_tokens</li>
+                        <li class="slide-in-center" style="animation-delay: 0.2s;">Mix multiple audio files in one request (total ≤9.5 h)</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.3s;">
+                    <div class="main-content">
+                        <strong>Error handling & limits</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.35s;">Use Files API if total request size >20 MB</li>
+                        <li class="slide-in-center" style="animation-delay: 0.4s;">Unsupported formats will be rejected</li>
+                        <li class="slide-in-center" style="animation-delay: 0.45s;">Long prompts near context limit may truncate responses</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.5s;">
+                    <div class="main-content">
+                        <strong>Use cases & examples</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.55s;">Podcast or lecture summarization</li>
+                        <li class="slide-in-center" style="animation-delay: 0.6s;">Customer service call transcription & analysis</li>
+                        <li class="slide-in-center" style="animation-delay: 0.65s;">Birdsong or environmental audio description</li>
+                    </ul>
+                </li>
+                
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

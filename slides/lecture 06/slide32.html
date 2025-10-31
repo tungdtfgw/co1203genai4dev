@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Process</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Step 6: Create Trainer and Start Fine-tuning</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            Trainer Object:
+                            Hugging Face wrapper for simplified training loop
+                        </li>
+                        <li>
+                            Training Args:
+                            All hyperparameters have been configured
+                        </li>
+                        <li>
+                            Datasets:
+                            Train and eval datasets have been tokenized
+                        </li>
+                        <li>
+                            Metrics Computation:
+                            Automatically compute accuracy during training
+                        </li>
+                        <li>
+                            Auto Features:
+                            Built-in logging, checkpointing, and evaluation
+                        </li>
+                        <li>
+                            Training Time:
+                            Monitor and track training time
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>training_process.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="comment"># Create Trainer</span>
+<span class="variable">trainer</span> <span class="operator">=</span> <span class="function">Trainer</span>(
+    <span class="keyword">model</span><span class="operator">=</span><span class="variable">model</span>,
+    <span class="keyword">args</span><span class="operator">=</span><span class="variable">training_args</span>,
+    <span class="keyword">train_dataset</span><span class="operator">=</span><span class="variable">train_dataset</span>,
+    <span class="keyword">eval_dataset</span><span class="operator">=</span><span class="variable">test_dataset</span>,
+    <span class="keyword">tokenizer</span><span class="operator">=</span><span class="variable">tokenizer</span>,
+    <span class="keyword">data_collator</span><span class="operator">=</span><span class="function">DataCollatorWithPadding</span>(<span class="keyword">tokenizer</span><span class="operator">=</span><span class="variable">tokenizer</span>),
+    <span class="keyword">compute_metrics</span><span class="operator">=</span><span class="variable">compute_metrics</span>,
+)
+
+<span class="function">print</span>(<span class="string">"Trainer created and ready!"</span>)
+
+<span class="comment"># Start fine-tuning!</span>
+<span class="keyword">import</span> <span class="variable">time</span>
+<span class="variable">start_time</span> <span class="operator">=</span> <span class="variable">time</span>.<span class="function">time</span>()
+
+<span class="variable">train_result</span> <span class="operator">=</span> <span class="variable">trainer</span>.<span class="function">train</span>()
+
+<span class="comment"># Calculate training time</span>
+<span class="variable">training_time</span> <span class="operator">=</span> <span class="variable">time</span>.<span class="function">time</span>() <span class="operator">-</span> <span class="variable">start_time</span>
+<span class="function">print</span>(<span class="string">f"Training completed in {training_time:.1f}s"</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

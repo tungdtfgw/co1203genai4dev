@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 32 - Key Concepts of the Framework</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Key Concepts of the Framework</h1>
+            
+            <ul class="content-list template1-list">
+                <li class="slide-in-center">
+                    <strong>The Agent</strong><br>
+                    An Agent is the fundamental building block, representing an AI with a specific purpose. It is defined by a name and a set of instructions (its system prompt).
+                </li>
+                
+                <li class="slide-in-center" style="animation-delay: 0.2s;">
+                    <strong>The Runner</strong><br>
+                    The Runner is responsible for executing an agent with a given input. It manages the interaction with the OpenAI API and returns the agent's final output.
+                </li>
+                
+                <li class="slide-in-center" style="animation-delay: 0.4s;">
+                    <strong>Handoffs</strong><br>
+                    Handoffs allow agents to pass tasks to other agents, enabling complex workflows where different specialists work together.
+                </li>
+                
+                <li class="slide-in-center" style="animation-delay: 0.6s;">
+                    <strong>Guardrails</strong><br>
+                    Guardrails are safety mechanisms that filter and validate inputs before they are processed by agents, ensuring appropriate behavior.
+                </li>
+                
+                <li class="slide-in-center" style="animation-delay: 0.8s;">
+                    <strong>Asynchronous Design</strong><br>
+                    The framework is built with asyncio, allowing agents to work concurrently and handle multiple tasks efficiently.
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Client & Chat Session - Greenwich Presentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Create a Client & Chat Session</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>Use the client to make stateless calls or to create a chat.</li>
+                        <li>The stateless call doesn’t retain memory.</li>
+                        <li>The chat session stores the conversation history automatically.</li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>client_chat_creation.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content scrollable-code" id="code-block"><span class="keyword">from</span> <span class="module">google</span> <span class="keyword">import</span> <span class="module">genai</span>
+<span class="variable">client</span> <span class="operator">=</span> <span class="function">genai.Client</span>()
+<span class="comment"># Stateless call</span>
+<span class="variable">resp</span> <span class="operator">=</span> <span class="variable">client</span>.<span class="function">models.generate_content</span>(<span class="keyword">model</span><span class="operator">=</span><span class="string">'gemini-2.5-flash'</span>, <span class="keyword">contents</span><span class="operator">=</span><span class="string">'Hello!'</span>)
+<span class="function">print</span>(<span class="variable">resp</span>.<span class="keyword">text</span>)
+
+<span class="comment"># Stateful chat</span>
+<span class="variable">chat</span> <span class="operator">=</span> <span class="variable">client</span>.<span class="function">chats.create</span>(<span class="keyword">model</span><span class="operator">=</span><span class="string">'gemini-2.0-flash'</span>)
+<span class="variable">chat_resp</span> <span class="operator">=</span> <span class="variable">chat</span>.<span class="function">send_message</span>(<span class="keyword">message</span><span class="operator">=</span><span class="string">'Hello!'</span>)
+<span class="function">print</span>(<span class="variable">chat_resp</span>.<span class="keyword">text</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

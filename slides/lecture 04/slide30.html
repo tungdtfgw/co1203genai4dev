@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison Input vs Output Caching</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Comparison Input vs Output Caching</h1>
+            
+            <ul class="content-list wide compact template6-list">
+                <li class="slide-in-center">
+                    <div class="main-content">
+                        <strong>Input Caching stores the model's internal state after processing the beginning of the prompt.</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.1s;">It helps reduce latency by 50-85% and saves API costs by 50-90%.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.15s;">Response quality is always up-to-date, but it requires the prompt prefix to be exactly the same.</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.3s;">
+                    <div class="main-content">
+                        <strong>Output Caching stores entire prompt-response pairs for direct retrieval.</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.35s;">It helps reduce latency to nearly zero and saves costs by nearly 100% when there's a cache hit.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.4s;">This method supports flexible matching (exact and semantic) but responses may not be updated with the latest model version.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Turn Function Calling</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Multi-Turn Function Calling</h1>
+            
+            <ul class="content-list wide compact template6-list">
+                <li class="slide-in-center">
+                    <div class="main-content">
+                        <strong>Conversations are often more complex than a single question and answer.</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.1s;">A user might ask a follow-up question that requires another function call, or multiple calls for one prompt.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.15s;">Gemini supports these multi-turn scenarios automatically.</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.3s;">
+                    <div class="main-content">
+                        <strong>Example Interaction:</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.35s;">User: "What's the weather in Tokyo and London?"</li>
+                        <li class="slide-in-center" style="animation-delay: 0.4s;">Model: Calls `get_current_weather` for "Tokyo".</li>
+                        <li class="slide-in-center" style="animation-delay: 0.45s;">You: Return the weather for Tokyo.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.5s;">Model: Calls `get_current_weather` for "London".</li>
+                        <li class="slide-in-center" style="animation-delay: 0.55s;">You: Return the weather for London.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.6s;">Model: "In Tokyo, it is 15 degrees and cloudy. In London, it is 10 degrees and raining."</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

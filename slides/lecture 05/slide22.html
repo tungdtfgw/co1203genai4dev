@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 1: Project Setup & Prerequisites</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Step 1: Project Setup & Prerequisites</h1>
+      <ul class="content-list wide compact template6-list">
+        <li class="slide-in-center">
+          <div class="main-content">
+            <strong>Folder Structure</strong>
+          </div>
+          <ul class="sub-list">
+            <li class="slide-in-center" style="animation-delay: 0.1s;"><strong>docs/:</strong> Place your source PDF and DOCX files here.</li>
+            <li class="slide-in-center" style="animation-delay: 0.15s;"><strong>chunks/:</strong> Stores the processed text chunks from your documents.</li>
+            <li class="slide-in-center" style="animation-delay: 0.2s;"><strong>bins/:</strong> Stores the generated FAISS index files for fast retrieval.</li>
+            <li class="slide-in-center" style="animation-delay: 0.25s;"><strong>Python Scripts:</strong> <code>extract_text.py</code>, <code>create_embeddings.py</code>, <code>chat_txt_gemini.py</code>.</li>
+          </ul>
+        </li>
+        <li class="slide-in-center" style="animation-delay: 0.3s;">
+          <div class="main-content">
+            <strong>Installing Dependencies</strong>
+          </div>
+          <ul class="sub-list">
+            <li class="slide-in-center" style="animation-delay: 0.35s;">All required Python libraries are listed in <code>requirements.txt</code>.</li>
+            <li class="slide-in-center" style="animation-delay: 0.4s;">Install them easily using a single command in your terminal: <code>pip install -r requirements.txt</code>.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

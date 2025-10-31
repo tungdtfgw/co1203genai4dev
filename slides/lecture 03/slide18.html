@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Summarization Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Audio Summarization Example</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            <strong>Upload an MP3 file and ask for a description:</strong>
+                            Use the Files API to upload audio and request analysis
+                        </li>
+                        <li>
+                            <strong>Display the model's response:</strong>
+                            Process and display the generated summary or transcript
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>audio_summarization.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="keyword">from</span> <span class="variable">google</span> <span class="keyword">import</span> <span class="variable">genai</span>
+
+<span class="variable">client</span> <span class="operator">=</span> <span class="function">genai.Client</span>()
+<span class="comment"># Upload audio file</span>
+<span class="variable">myfile</span> <span class="operator">=</span> <span class="variable">client</span>.<span class="variable">files</span>.<span class="function">upload</span>(<span class="variable">file</span><span class="operator">=</span><span class="string">"lecture.mp3"</span>)
+<span class="comment"># Ask the model to describe the clip</span>
+<span class="variable">response</span> <span class="operator">=</span> <span class="variable">client</span>.<span class="variable">models</span>.<span class="function">generate_content</span>(
+    <span class="variable">model</span><span class="operator">=</span><span class="string">"gemini-2.5-flash"</span>,
+    <span class="variable">contents</span><span class="operator">=</span>[<span class="string">"Summarize the main points"</span>, <span class="variable">myfile</span>]
+)
+<span class="function">print</span>(<span class="variable">response</span>.<span class="variable">text</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

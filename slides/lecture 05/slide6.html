@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAG High-Level Architecture</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">RAG High-Level Architecture</h1>
+      <div class="two-panel">
+        <div class="panel slide-in-left">
+          <img src="images/rag_arch.png" alt="RAG Architecture" class="panel-image">
+        </div>
+        <div class="panel panel-text slide-in-right">
+          <ul class="content-list template3-list">
+            <li><strong>The Two Core Stages:</strong></li>
+            <li><strong>Indexing (Offline):</strong> The process of preparing your knowledge base. Documents are loaded, processed, and stored in a searchable format.</li>
+            <li><strong>Retrieval & Generation (Real-time):</strong> When a user asks a question, the system retrieves relevant information and provides it to the LLM along with the original question to generate an answer.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

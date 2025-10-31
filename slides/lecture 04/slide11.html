@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security and Environment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Security and Environment</h1>
+            
+            <ul class="content-list wide compact template6-list">
+                <li class="slide-in-center">
+                    <div class="main-content">
+                        <strong>Code execution is a powerful tool, so security is a primary concern.</strong>
+                    </div>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.2s;">
+                    <div class="main-content">
+                        <strong>All code is executed in a secure, sandboxed environment.</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.25s;">The execution environment has no access to the local machine, network, or any user credentials.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.3s;">It prevents the model from performing harmful actions.</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.4s;">
+                    <div class="main-content">
+                        <strong>The environment is also stateless.</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.45s;">Each code execution call is independent.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.5s;">Variables or states from one call do not persist to the next, ensuring predictable and isolated executions.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

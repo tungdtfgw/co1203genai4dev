@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Prompt Caching</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Introduction to Prompt Caching</h1>
+            
+            <ul class="content-list wide compact template6-list">
+                <li class="slide-in-center">
+                    <div class="main-content">
+                        <strong>Prompt caching is a performance and cost optimization technique for Large Language Models (LLMs)</strong> by storing and reusing the processing results of unchanged prompt parts.
+                    </div>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.2s;">
+                    <div class="main-content">
+                        <strong>The main goal is to reduce latency and processing costs for long prompts</strong> by avoiding reprocessing unchanged parts between requests.
+                    </div>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.4s;">
+                    <div class="main-content">
+                        <strong>The basic mechanism is storing the model's internal state</strong> after processing the beginning of the prompt (input caching) or storing the entire prompt-response pair (output caching).
+                    </div>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.6s;">
+                    <div class="main-content">
+                        <strong>When an LLM processes a long prompt, most of the time and computational cost</strong> is spent on processing the beginning of the prompt, and prompt caching helps avoid reprocessing this part.
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

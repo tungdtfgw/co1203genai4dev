@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Architecture</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">System Architecture</h1>
+      <!-- <div class="content-intro">
+        <p class="intro-text">How It All Connects</p>
+      </div> -->
+      <ul class="content-list template1-list">
+        <li class="slide-in-left"><strong>Offline Processing (Indexing):</strong> Documents are extracted, chunked, converted to embeddings, and stored in a FAISS index.</li>
+        <li class="slide-in-left" style="animation-delay: 0.25s;"><strong>Online Processing (Inference):</strong> A user query is embedded and used to search the FAISS index for relevant chunks.</li>
+        <li class="slide-in-left" style="animation-delay: 0.5s;"><strong>Generation:</strong> The relevant chunks (context) and the query are sent to Gemini to generate the final answer.</li>
+        <li class="slide-in-left" style="animation-delay: 0.75s;"><strong>User Interface:</strong> Streamlit handles user interaction and displays the results.</li>
+      </ul>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reinforcement Learning from Human Feedback (RLHF)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Reinforcement Learning from Human Feedback (RLHF)</h1>
+            
+            <ul class="content-list wide compact template6-list">
+                <li class="slide-in-center">
+                    <div class="main-content">
+                        <strong>Role of Human Feedback:</strong> Gen AI models, especially LLMs, can produce inaccurate, harmful, or undesired results. RLHF is a technique used to improve the safety, helpfulness, and appropriateness of these models.
+                    </div>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.3s;">
+                    <div class="main-content">
+                        <strong>RLHF Process:</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.35s;"><strong>Collect comparison data:</strong> Humans evaluate and rank different outputs produced by the model.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.4s;"><strong>Train a reward model:</strong> This model learns to predict human preferences based on comparison data.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.45s;"><strong>Fine-tune the Gen AI model using reinforcement learning:</strong> The Gen AI model is fine-tuned to maximize rewards from the reward model, thereby generating results more aligned with human desires.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

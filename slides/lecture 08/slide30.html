@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 41 - What Happens When the Guardrail Blocks?</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">What Happens When the Guardrail Blocks?</h1>
+            
+            <ul class="content-list template1-list">
+                <li class="slide-in-center">
+                    <strong>A User asks "What's the weather like?"</strong><br>
+                    1. The input is sent to the homework_guardrail. 2. The guardrail_agent analyzes the input and its HomeworkOutput is {is_homework: false, reasoning: "This is a general knowledge question, not related to academics."}.
+                </li>
+                
+                <li class="slide-in-center" style="animation-delay: 0.2s;">
+                    <strong>The Tripwire is Triggered</strong><br>
+                    3. The homework_guardrail function sees that is_homework is False. 4. It sets tripwire_triggered=True, which immediately stops the process and raises an InputGuardrailTripwireTriggered exception.
+                </li>
+                
+                <li class="slide-in-center" style="animation-delay: 0.4s;">
+                    <strong>Process Termination</strong><br>
+                    5. The exception is caught and handled. 6. The user receives a message explaining that the request was blocked because it's not related to homework or academic topics.
+                </li>
+                
+                <li class="slide-in-center" style="animation-delay: 0.6s;">
+                    <strong>Security and Control</strong><br>
+                    7. The system maintains its security and control by preventing inappropriate or off-topic requests from being processed. 8. This ensures that the system only handles requests that align with its intended purpose.
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

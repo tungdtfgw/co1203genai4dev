@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 24 - tut02_3agents.py Setup</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Advanced Agent example</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li><strong>Load credentials:</strong> <code>load_dotenv()</code> pulls secrets from the local <code>.env</code>.</li>
+                        <li><strong>Validate configuration:</strong> <code>get_key()</code> raises a helpful error when the key is missing.</li>
+                        <li><strong>Expose to agents:</strong> the key is injected into <code>os.environ</code> for downstream usage.</li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>tut02_3agents.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block" style="max-height: 320px; overflow: auto;"><code><span class="comment"># tut02_3agents.py — environment setup</span>
+<span class="keyword">from</span> <span class="variable">agents</span> <span class="keyword">import</span> <span class="variable">Agent</span>, <span class="variable">InputGuardrail</span>, <span class="variable">GuardrailFunctionOutput</span>, <span class="variable">Runner</span>
+<span class="keyword">from</span> <span class="variable">agents</span>.<span class="variable">exceptions</span> <span class="keyword">import</span> <span class="variable">InputGuardrailTripwireTriggered</span>
+<span class="keyword">from</span> <span class="variable">pydantic</span> <span class="keyword">import</span> <span class="variable">BaseModel</span>
+<span class="keyword">import</span> <span class="variable">os</span>
+<span class="keyword">from</span> <span class="variable">dotenv</span> <span class="keyword">import</span> <span class="variable">load_dotenv</span>
+<span class="keyword">import</span> <span class="variable">asyncio</span>
+
+<span class="comment"># Load API credentials from the .env file</span>
+<span class="variable">load_dotenv</span>()
+
+
+<span class="keyword">def</span> <span class="function">get_key</span>():
+    <span class="variable">key</span> = <span class="variable">os</span>.<span class="function">getenv</span>(<span class="string">'OPENAI_API_KEY'</span>)
+    <span class="keyword">if</span> <span class="keyword">not</span> <span class="variable">key</span>:
+        <span class="keyword">raise</span> <span class="variable">ValueError</span>(
+            <span class="string">"OPENAI_API_KEY not found. Please add it to your .env file."</span>
+        )
+    <span class="keyword">return</span> <span class="variable">key</span>
+
+
+<span class="comment"># Share the key with the agents runtime</span>
+<span class="variable">os</span>.<span class="variable">environ</span>[<span class="string">'OPENAI_API_KEY'</span>] = <span class="function">get_key</span>()</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

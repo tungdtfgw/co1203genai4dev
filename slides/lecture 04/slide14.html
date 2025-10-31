@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Execution vs. Function Calling</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Code Execution vs. Function Calling</h1>
+            
+            <ul class="content-list wide compact template6-list">
+                <li class="slide-in-center">
+                    <div class="main-content">
+                        <strong>Code Execution</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.1s;">The model <strong>writes and executes</strong> its own Python code in a sandboxed environment provided by Google.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.15s;">Good for self-contained computational tasks.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.2s;">The developer's role is simply to enable the tool.</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.3s;">
+                    <div class="main-content">
+                        <strong>Function Calling</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.35s;">The model <strong>requests the execution</strong> of a function that <strong>you, the developer, have defined</strong> in your own application code.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.4s;">Good for accessing external data (APIs) or executing proprietary logic.</li>
+                        <li class="slide-in-center" style="animation-delay: 0.45s;">The developer must declare the functions, handle the call, execute the code, and return the result.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load and Prepare Data</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Bước 2: Load và Prepare IMDB Data</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            Load Dataset:
+                            IMDB movie reviews đã được cleaned và preprocessed
+                        </li>
+                        <li>
+                            Label Mapping:
+                            Convert text labels ('positive', 'negative') thành numerical (1, 0)
+                        </li>
+                        <li>
+                            Data Split:
+                            80% training data, 20% testing data cho evaluation
+                        </li>
+                        <li>
+                            Stratified Split:
+                            Giữ nguyên tỉ lệ positive/negative trong cả train và test
+                        </li>
+                        <li>
+                            Ready for Training:
+                            Data structure hoàn chỉnh cho fine-tuning process
+                        </li>
+                        <li>
+                            Data Validation:
+                            Check data distribution và quality trước khi training
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>data_preparation.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="comment"># Load IMDB dataset</span>
+<span class="variable">df</span> <span class="operator">=</span> <span class="variable">pd</span>.<span class="function">read_csv</span>(<span class="string">'IMDB_cleaned.csv'</span>)
+<span class="function">print</span>(<span class="string">f"Total samples: {len(df):,}"</span>)
+
+<span class="comment"># Convert sentiment to numerical labels</span>
+<span class="variable">df</span>[<span class="string">'label'</span>] <span class="operator">=</span> <span class="variable">df</span>[<span class="string">'sentiment'</span>].<span class="function">map</span>({
+    <span class="string">'positive'</span>: <span class="keyword">1</span>, 
+    <span class="string">'negative'</span>: <span class="keyword">0</span>
+})
+
+<span class="comment"># Split data: 80% train, 20% test</span>
+<span class="variable">train_texts</span>, <span class="variable">test_texts</span>, <span class="variable">train_labels</span>, <span class="variable">test_labels</span> <span class="operator">=</span> <span class="function">train_test_split</span>(
+    <span class="variable">df</span>[<span class="string">'cleaned_review'</span>].<span class="function">tolist</span>(),
+    <span class="variable">df</span>[<span class="string">'label'</span>].<span class="function">tolist</span>(),
+    <span class="keyword">test_size</span><span class="operator">=</span><span class="keyword">0.2</span>,
+    <span class="keyword">random_state</span><span class="operator">=</span><span class="keyword">42</span>,
+    <span class="keyword">stratify</span><span class="operator">=</span><span class="variable">df</span>[<span class="string">'label'</span>]
+)
+
+<span class="function">print</span>(<span class="string">f"Training: {len(train_texts):,} samples"</span>)
+<span class="function">print</span>(<span class="string">f"Testing: {len(test_texts):,} samples"</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load Pre-trained Model</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Bước 3: Load Pre-trained DistilBERT Model</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            DistilBERT Selection:
+                            Version nhẹ của BERT với 66M parameters, fast training
+                        </li>
+                        <li>
+                            Tokenizer Loading:
+                            Convert text thành tokens mà model hiểu được
+                        </li>
+                        <li>
+                            Classification Head:
+                            Configure cho 2 classes binary classification
+                        </li>
+                        <li>
+                            Label Mapping:
+                            Định nghĩa ID và nhãn tương ứng (0=NEGATIVE, 1=POSITIVE)
+                        </li>
+                        <li>
+                            Device Transfer:
+                            Chuyển model lên GPU/MPS để tăng tốctraining
+                        </li>
+                        <li>
+                            Model Statistics:
+                            Check số parameters và memory usage
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>model_loading.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="comment"># Choose pre-trained model</span>
+<span class="variable">MODEL_NAME</span> <span class="operator">=</span> <span class="string">'distilbert-base-uncased'</span>
+
+<span class="comment"># Load tokenizer</span>
+<span class="variable">tokenizer</span> <span class="operator">=</span> <span class="function">AutoTokenizer</span>.<span class="function">from_pretrained</span>(<span class="variable">MODEL_NAME</span>)
+<span class="function">print</span>(<span class="string">"Tokenizer loaded"</span>)
+
+<span class="comment"># Load model for sequence classification</span>
+<span class="variable">model</span> <span class="operator">=</span> <span class="function">AutoModelForSequenceClassification</span>.<span class="function">from_pretrained</span>(
+    <span class="variable">MODEL_NAME</span>,
+    <span class="keyword">num_labels</span><span class="operator">=</span><span class="keyword">2</span>,
+    <span class="keyword">id2label</span><span class="operator">=</span>{<span class="keyword">0</span>: <span class="string">"NEGATIVE"</span>, <span class="keyword">1</span>: <span class="string">"POSITIVE"</span>},
+    <span class="keyword">label2id</span><span class="operator">=</span>{<span class="string">"NEGATIVE"</span>: <span class="keyword">0</span>, <span class="string">"POSITIVE"</span>: <span class="keyword">1</span>}
+)
+
+<span class="comment"># Move to device</span>
+<span class="variable">model</span> <span class="operator">=</span> <span class="variable">model</span>.<span class="function">to</span>(<span class="variable">device</span>)
+<span class="function">print</span>(<span class="string">f"Model moved to: {device}"</span>)
+
+<span class="comment"># Model statistics</span>
+<span class="variable">total_params</span> <span class="operator">=</span> <span class="function">sum</span>(<span class="variable">p</span>.<span class="function">numel</span>() <span class="keyword">for</span> <span class="variable">p</span> <span class="keyword">in</span> <span class="variable">model</span>.<span class="function">parameters</span>())
+<span class="function">print</span>(<span class="string">f"Parameters: {total_params:,}"</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

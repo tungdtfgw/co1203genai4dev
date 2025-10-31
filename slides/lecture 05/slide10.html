@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Inference Pipeline: Answering a User Query</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">The Inference Pipeline: Answering a User Query</h1>
+      <div class="two-panel">
+        <div class="panel panel-text slide-in-left">
+          <ul class="content-list template2-list">
+            <li><strong>Step 1 - User Query</strong>: The process begins when a user submits a prompt or question.</li>
+            <li><strong>Step 2 - Semantic Search</strong>: The user's query is converted into a vector embedding then system searches the vector DB to find the text chunks whose embeddings are most similar to the query embedding.</li>
+            <li><strong>Step 3: Prompt Augmentation</strong>: The original query and the retrieved context documents are combined into a single, augmented prompt.</li>
+            <li><strong>Step 4: Generation</strong>: LLM then generates a final answer based on the provided information.</li>
+          </ul>
+        </div>
+        <div class="panel slide-in-right">
+          <img src="images/img-rag-architecture-model.jpg" alt="RAG Inference Pipeline" class="panel-image">
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 14 — Key Steps in the Fine-Tuning Process (2/2)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Key Steps in the Fine-Tuning Process (2/2)</h1>
+      
+      <div class="two-panel">
+        <div class="panel panel-text slide-in-left">
+          <ul class="content-list template2-list">
+            <li>
+              <strong>4. Fine-Tune the Model</strong><br>
+              Adjust the model's parameters on your specialized dataset using a chosen technique (Full Fine-Tuning or PEFT).
+            </li>
+            <li>
+              <strong>5. Evaluate and Validate</strong><br>
+              Assess the fine-tuned model's performance on unseen data to ensure it generalizes well.<br>
+              Use both quantitative metrics (e.g., ROUGE, Accuracy) and qualitative human evaluation.
+            </li>
+            <li>
+              <strong>6. Deploy and Monitor</strong><br>
+              Package the fine-tuned model and integrate it into your production application.<br>
+              Continuously monitor its performance and maintain it over time.
+            </li>
+          </ul>
+        </div>
+        
+        <div class="panel slide-in-right">
+          <img src="images/process.png" alt="Fine-tuning process diagram" class="panel-image">
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

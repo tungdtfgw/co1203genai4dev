@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Dive: The Hallucination Problem</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Deep Dive: The Hallucination Problem</h1>
+      <ul class="content-list wide compact template6-list">
+        <li class="slide-in-center">
+          <div class="main-content">
+            <strong>What is a "Hallucination"?</strong>
+          </div>
+          <ul class="sub-list">
+            <li class="slide-in-center" style="animation-delay: 0.1s;">An LLM confidently produces a response that is factually incorrect, nonsensical, or not grounded in its training data.</li>
+            <li class="slide-in-center" style="animation-delay: 0.15s;">This happens because LLMs are designed to predict the next most probable word, not to state facts.</li>
+          </ul>
+        </li>
+        <li class="slide-in-center" style="animation-delay: 0.3s;">
+          <div class="main-content">
+            <strong>Why is it a Critical Issue?</strong>
+          </div>
+          <ul class="sub-list">
+            <li class="slide-in-center" style="animation-delay: 0.35s;">It erodes user trust and makes LLMs unreliable for fact-based tasks.</li>
+            <li class="slide-in-center" style="animation-delay: 0.4s;">In enterprise or professional settings (e.g., medical, legal), hallucinations can have severe consequences.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

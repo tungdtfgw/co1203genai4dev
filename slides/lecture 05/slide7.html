@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Indexing Pipeline: Preparing Your Data</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">The Indexing Pipeline: Preparing Your Data</h1>
+      <div class="two-panel">
+        <div class="panel slide-in-left">
+          <img src="images/chunking.png" alt="Chunking and Embedding" class="panel-image">
+        </div>
+        <div class="panel panel-text slide-in-right">
+          <ul class="content-list template2-list">
+            <li><strong>Step 1: Data Loading</strong> The first step is to load your documents from various sources. Sources can include text files, PDFs, websites, databases, or APIs like Notion and Confluence.</li>
+            <li><strong>Step 2: Chunking (or Splitting)</strong> Documents are broken down into smaller, semantically meaningful chunks. This is crucial because LLMs have context window limits, and smaller chunks provide more targeted context for retrieval.</li>
+            <li><strong>Step 3: Embedding & Storing</strong> Each chunk of text is converted into a numerical vector (an "embedding") using an embedding model. These vectors are then stored in a specialized database called a Vector Database for efficient searching.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

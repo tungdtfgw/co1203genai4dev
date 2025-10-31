@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-to-Speech Configuration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Text-to-Speech Configuration</h1>
+            
+            <ul class="content-list wide compact template6-list template6-grid-2col">
+                <li class="slide-in-center">
+                    <div class="main-content">
+                        <strong>Single‑speaker TTS</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.1s;">Use response modality "audio" and SpeechConfig</li>
+                        <li class="slide-in-center" style="animation-delay: 0.15s;">Choose a prebuilt voice (e.g., Kore, Zephyr)</li>
+                        <li class="slide-in-center" style="animation-delay: 0.2s;">Outputs audio‑only; accepts only text input</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.3s;">
+                    <div class="main-content">
+                        <strong>Multi‑speaker TTS</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.35s;">Configure MultiSpeakerVoiceConfig with up to 2 speakers</li>
+                        <li class="slide-in-center" style="animation-delay: 0.4s;">Speaker names must match the names in the prompt</li>
+                        <li class="slide-in-center" style="animation-delay: 0.45s;">Each speaker can use a different voice</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.5s;">
+                    <div class="main-content">
+                        <strong>Controlling style & tone</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.55s;">Modify style, accent, pace via natural language prompts</li>
+                        <li class="slide-in-center" style="animation-delay: 0.6s;">Provide instructions per speaker in multi‑speaker prompts</li>
+                        <li class="slide-in-center" style="animation-delay: 0.65s;">Select voices that match the desired emotion</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.7s;">
+                    <div class="main-content">
+                        <strong>Supported voices & languages</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.75s;">30 voice options from Kore to Zephyr</li>
+                        <li class="slide-in-center" style="animation-delay: 0.8s;">Supports 24 languages (e.g., English, Vietnamese, Thai)</li>
+                        <li class="slide-in-center" style="animation-delay: 0.85s;">Choose model variant (Flash Preview or Pro Preview)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Code Execution Works</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">How Code Execution Works</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li class="slide-in-center">
+                            The user sends a prompt to the model.
+                        </li>
+                        <li class="slide-in-center" style="animation-delay: 0.2s;">
+                            The prompt might ask for a calculation or a task that requires coding logic.
+                        </li>
+                        <li class="slide-in-center" style="animation-delay: 0.3s;">
+                            The model determines that it needs to execute code.
+                        </li>
+                        <li class="slide-in-center" style="animation-delay: 0.4s;">
+                            It generates a Python code snippet to solve the task and sends it to the Code Execution tool.
+                        </li>
+                        <li class="slide-in-center" style="animation-delay: 0.5s;">
+                            The tool executes the code and returns the output.
+                        </li>
+                        <li class="slide-in-center" style="animation-delay: 0.6s;">
+                            The output is sent back to the model as context, which then formulates its final answer to the user.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="slide-in-right">
+                    <img src="images/llm-code-execution-flow.svg" alt="LLM Code Execution Flow" class="slide-image">
+                    <div class="image-caption">Code execution workflow</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

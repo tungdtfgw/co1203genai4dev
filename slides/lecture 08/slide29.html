@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 40 - How the Full System Works</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">How the Full System Works</h1>
+            
+            <ul class="content-list template1-list">
+                <li class="slide-in-center">
+                    <strong>A User asks "What was the Magna Carta?"</strong><br>
+                    1. The input is first sent to the homework_guardrail. 2. The guardrail_agent determines this is a homework question, so the guardrail allows it to pass.
+                </li>
+                
+                <li class="slide-in-center" style="animation-delay: 0.2s;">
+                    <strong>The Triage Agent Makes a Decision</strong><br>
+                    3. The triage_agent now receives the question. 4. It analyzes the question and compares it to the handoff_description of its specialist agents. It decides the "History Tutor" is the best match.
+                </li>
+                
+                <li class="slide-in-center" style="animation-delay: 0.4s;">
+                    <strong>Handoff to the Specialist</strong><br>
+                    5. The triage_agent hands off the question to the history_tutor. 6. The history_tutor processes the question and provides a detailed answer about the Magna Carta.
+                </li>
+                
+                <li class="slide-in-center" style="animation-delay: 0.6s;">
+                    <strong>Response Delivery</strong><br>
+                    7. The history_tutor's response is returned to the user. 8. The system logs the interaction for future reference and improvement.
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

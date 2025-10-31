@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokenization Process</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Step 4: Tokenization Process</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            Tokenization Example:
+                            Convert text to numbers that model understands
+                        </li>
+                        <li>
+                            Tokenize Function:
+                            Process all training and test data with same parameters
+                        </li>
+                        <li>
+                            Padding & Truncation:
+                            Ensure all sequences have same length (max_length=256)
+                        </li>
+                        <li>
+                            Dataset Creation:
+                            Prepare Hugging Face Dataset objects for Trainer
+                        </li>
+                        <li>
+                            Data Components:
+                            input_ids, attention_mask, and labels ready for training
+                        </li>
+                        <li>
+                            Batch Processing:
+                            Efficiently tokenize large amounts of text data
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>tokenization.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="comment"># Example of tokenization</span>
+<span class="variable">example_text</span> <span class="operator">=</span> <span class="string">"This movie is absolutely fantastic!"</span>
+<span class="variable">example_tokens</span> <span class="operator">=</span> <span class="variable">tokenizer</span>(<span class="variable">example_text</span>, 
+                           <span class="keyword">padding</span><span class="operator">=</span><span class="keyword">True</span>, 
+                           <span class="keyword">truncation</span><span class="operator">=</span><span class="keyword">True</span>, 
+                           <span class="keyword">return_tensors</span><span class="operator">=</span><span class="string">'pt'</span>)
+
+<span class="comment"># Tokenize all data</span>
+<span class="keyword">def</span> <span class="function">tokenize_function</span>(<span class="variable">texts</span>):
+    <span class="keyword">return</span> <span class="variable">tokenizer</span>(
+        <span class="variable">texts</span>,
+        <span class="keyword">padding</span><span class="operator">=</span><span class="keyword">True</span>,
+        <span class="keyword">truncation</span><span class="operator">=</span><span class="keyword">True</span>,
+        <span class="keyword">max_length</span><span class="operator">=</span><span class="keyword">256</span>
+    )
+
+<span class="variable">train_encodings</span> <span class="operator">=</span> <span class="function">tokenize_function</span>(<span class="variable">train_texts</span>)
+<span class="variable">test_encodings</span> <span class="operator">=</span> <span class="function">tokenize_function</span>(<span class="variable">test_texts</span>)
+
+<span class="comment"># Create dataset objects</span>
+<span class="variable">train_dataset</span> <span class="operator">=</span> <span class="function">Dataset</span>.<span class="function">from_dict</span>({
+    <span class="string">'input_ids'</span>: <span class="variable">train_encodings</span>[<span class="string">'input_ids'</span>],
+    <span class="string">'attention_mask'</span>: <span class="variable">train_encodings</span>[<span class="string">'attention_mask'</span>],
+    <span class="string">'labels'</span>: <span class="variable">train_labels</span>
+})</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

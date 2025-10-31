@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Q&A & Extraction</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Document Q&A & Extraction</h1>
+            
+            <ul class="content-list wide compact template6-list template6-grid-2col">
+                <li class="slide-in-center">
+                    <div class="main-content">
+                        <strong>Document Q&A workflow</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.1s;">Combine a document with a system instruction listing its content</li>
+                        <li class="slide-in-center" style="animation-delay: 0.15s;">Ask questions; model responds using only the document</li>
+                        <li class="slide-in-center" style="animation-delay: 0.2s;">Suitable for closed‑book Q&A on specific documents</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.3s;">
+                    <div class="main-content">
+                        <strong>Extract‑then‑ask approach</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.35s;">Use a library (e.g., PyPDF2) to extract text</li>
+                        <li class="slide-in-center" style="animation-delay: 0.4s;">Create a system prompt containing the extracted text</li>
+                        <li class="slide-in-center" style="animation-delay: 0.45s;">Send user questions to a chat session with system prompt</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.5s;">
+                    <div class="main-content">
+                        <strong>Inline vs extraction</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.55s;">Direct PDF prompts allow native vision (images, charts)</li>
+                        <li class="slide-in-center" style="animation-delay: 0.6s;">Extracted text loses formatting but reduces tokens</li>
+                        <li class="slide-in-center" style="animation-delay: 0.65s;">Choose method based on document structure & size</li>
+                    </ul>
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.7s;">
+                    <div class="main-content">
+                        <strong>Limitations</strong>
+                    </div>
+                    <ul class="sub-list">
+                        <li class="slide-in-center" style="animation-delay: 0.75s;">Inline PDFs must be <20 MB</li>
+                        <li class="slide-in-center" style="animation-delay: 0.8s;">Use caution with sensitive documents (privacy & rights)</li>
+                        <li class="slide-in-center" style="animation-delay: 0.85s;">Gemini cannot read password‑protected or corrupted PDFs</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

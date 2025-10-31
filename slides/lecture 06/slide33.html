@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Performance - Confusion Matrix</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Step 7: Model Performance - Confusion Matrix</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template2-list">
+                        <li>
+                            Overall Accuracy: 89.9%:
+                            Model correctly predicted 899 out of 1000 test samples
+                        </li>
+                        <li>
+                            True Negative: 482:
+                            Correctly classified negative movie reviews
+                        </li>
+                        <li>
+                            True Positive: 417:
+                            Correctly classified positive movie reviews
+                        </li>
+                        <li>
+                            False Positive: 24:
+                            Negative reviews incorrectly classified as positive
+                        </li>
+                        <li>
+                            False Negative: 77:
+                            Positive reviews incorrectly classified as negative
+                        </li>
+                        <li>
+                            Balanced Performance:
+                            Precision and Recall both > 84% for both classes
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <img src="images/confusion_matrix.png" alt="Confusion Matrix - Model Performance" class="panel-image">
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

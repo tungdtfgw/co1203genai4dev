@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stateful Conversations: Benefits & Considerations - Greenwich Presentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Stateful Conversations: Benefits & Considerations</h1>
+            
+            <ul class="content-list wide compact template1-list">
+                <li class="slide-in-center">
+                    Retains context across turns, allowing for more natural dialogue and follow-up questions.
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.2s;">
+                    Useful for agents that need to remember prior user intents or maintain a persona.
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.4s;">
+                    Context windows are limited, so very long sessions may require summarization or context management.
+                </li>
+                <li class="slide-in-center" style="animation-delay: 0.6s;">
+                    Stateful chats incur additional token usage because the entire history is sent on each turn.
+                </li>
+                 <li class="slide-in-center" style="animation-delay: 0.8s;">
+                    Chat sessions in the Live API have lifetime limits; consider techniques like context compression or session resumption for long interactions.
+                </li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

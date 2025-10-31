@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 5: Indexing with FAISS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Step 5: Indexing with FAISS</h1>
+      <div class="two-panel">
+        <div class="panel panel-text slide-in-left">
+          
+          <ul class="content-list template2-list">
+            <li>After creating embeddings, we need to store them in a way that allows for fast searching.</li>
+            <li>We use FAISS to create a searchable index for each document's embeddings.</li>
+          
+            <li><strong>4. <code>faiss.IndexFlatL2</code>:</strong> Creates a simple index that performs an exact search based on L2 (Euclidean) distance.</li>
+            <li><strong>5. <code>faiss.write_index</code>:</strong> Saves the created index structure to a <code>.bin</code> file so it can be reloaded later. We also save the corresponding text chunks.</li>
+          </ul>
+        </div>
+        <div class="panel slide-in-right">
+          <div class="code-panel">
+            <h3 class="code-title">Code Snippet & Explanation</h3>
+            <pre class="code-content">
+<span class="comment"># create_embeddings.py (continued)</span>
+
+<span class="comment"># 4. Create FAISS Index</span>
+<span class="variable">dimension</span> <span class="operator">=</span> <span class="variable">embeddings</span><span class="operator">.</span><span class="variable">shape</span><span class="operator">[</span><span class="number">1</span><span class="operator">]</span>      <span class="comment"># Get the vector dimension (1024)</span>
+<span class="variable">index</span> <span class="operator">=</span> <span class="variable">faiss</span><span class="operator">.</span><span class="function">IndexFlatL2</span><span class="operator">(</span><span class="variable">dimension</span><span class="operator">)</span> <span class="comment"># Initialize the index</span>
+<span class="variable">index</span><span class="operator">.</span><span class="function">add</span><span class="operator">(</span><span class="variable">np</span><span class="operator">.</span><span class="function">array</span><span class="operator">(</span><span class="variable">embeddings</span><span class="operator">))</span>      <span class="comment"># Add the embeddings to the index</span>
+
+<span class="comment"># 5. Save the index and chunks</span>
+<span class="variable">bin_file</span> <span class="operator">=</span> <span class="variable">os</span><span class="operator">.</span><span class="variable">path</span><span class="operator">.</span><span class="function">join</span><span class="operator">(</span><span class="string">'bins'</span><span class="operator">,</span> <span class="string">f'faiss_index_{file_name}.bin'</span><span class="operator">)</span>
+<span class="variable">faiss</span><span class="operator">.</span><span class="function">write_index</span><span class="operator">(</span><span class="variable">index</span><span class="operator">,</span> <span class="variable">bin_file</span><span class="operator">)</span>
+
+<span class="variable">chunk_file</span> <span class="operator">=</span> <span class="variable">os</span><span class="operator">.</span><span class="variable">path</span><span class="operator">.</span><span class="function">join</span><span class="operator">(</span><span class="string">'chunks'</span><span class="operator">,</span> <span class="string">f'chunks_{file_name}.txt'</span><span class="operator">)</span>
+<span class="keyword">with</span> <span class="function">open</span><span class="operator">(</span><span class="variable">chunk_file</span><span class="operator">,</span> <span class="string">'w'</span><span class="operator">,</span> <span class="keyword">encoding</span><span class="operator">=</span><span class="string">'utf-8'</span><span class="operator">)</span> <span class="keyword">as</span> <span class="variable">f</span><span class="operator">:</span>
+    <span class="keyword">for</span> <span class="variable">chunk</span> <span class="keyword">in</span> <span class="variable">chunks</span><span class="operator">:</span>
+        <span class="variable">f</span><span class="operator">.</span><span class="function">write</span><span class="operator">(</span><span class="variable">chunk</span> <span class="operator">+</span> <span class="string">'\n---\n'</span><span class="operator">)</span>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

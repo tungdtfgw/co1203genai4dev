@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stateful Chat Example - Greenwich Presentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Stateful Chat Example</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>The chat object maintains the conversation history, enabling the model to answer follow-up questions in context.</li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>stateful_chat.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content scrollable-code" id="code-block"><span class="keyword">from</span> <span class="module">google</span> <span class="keyword">import</span> <span class="module">genai</span>
+<span class="keyword">from</span> <span class="module">intro_gemini.utils</span> <span class="keyword">import</span> <span class="function">get_key</span>
+
+<span class="variable">client</span> <span class="operator">=</span> <span class="function">genai.Client</span>(<span class="keyword">api_key</span><span class="operator">=</span><span class="function">get_key</span>())
+<span class="comment"># Create a chat session</span>
+<span class="variable">chat</span> <span class="operator">=</span> <span class="variable">client</span>.<span class="function">chats.create</span>(<span class="keyword">model</span><span class="operator">=</span><span class="string">'gemini-2.0-flash'</span>)
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    <span class="variable">question</span> <span class="operator">=</span> <span class="function">input</span>(<span class="string">'[User]: '</span>)
+    <span class="keyword">if</span> <span class="variable">question</span> <span class="keyword">in</span> (<span class="string">'exit'</span>, <span class="string">'quit'</span>):
+        <span class="keyword">break</span>
+    <span class="variable">response</span> <span class="operator">=</span> <span class="variable">chat</span>.<span class="function">send_message</span>(<span class="keyword">message</span><span class="operator">=</span><span class="variable">question</span>)
+    <span class="function">print</span>(<span class="string">'[GenAI]:'</span>, <span class="variable">response</span>.<span class="keyword">text</span>)
+<span class="comment"># Inspect history</span>
+<span class="keyword">for</span> <span class="variable">message</span> <span class="keyword">in</span> <span class="variable">chat</span>.<span class="function">get_history</span>():
+    <span class="function">print</span>(<span class="function">f</span><span class="string">'{message.role}: {message.parts[0].text}'</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

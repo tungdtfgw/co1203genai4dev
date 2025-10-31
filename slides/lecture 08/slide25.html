@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 25 - tut02_3agents.py Guardrail Model</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Structured Guardrail Output</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li><strong>Typed responses:</strong> <code>HomeworkOutput</code> enforces a boolean decision plus reasoning.</li>
+                        <li><strong>Guardrail agent:</strong> dedicated agent checks whether each prompt is homework-related.</li>
+                        <li><strong>Strict wiring:</strong> <code>output_type</code> guarantees downstream code receives validated data.</li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>tut02_3agents.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block" style="max-height: 320px; overflow: auto;"><code><span class="comment"># tut02_3agents.py — guardrail schema and agent</span>
+<span class="keyword">class</span> <span class="variable">HomeworkOutput</span>(<span class="variable">BaseModel</span>):
+    <span class="string">"""Structure for guardrail agent output."""</span>
+    <span class="variable">is_homework</span>: <span class="variable">bool</span>
+    <span class="variable">reasoning</span>: <span class="variable">str</span>
+
+
+<span class="variable">guardrail_agent</span> = <span class="variable">Agent</span>(
+    <span class="variable">name</span>=<span class="string">"Guardrail check"</span>,
+    <span class="variable">instructions</span>=<span class="string">"Check if the user is asking about homework."</span>,
+    <span class="variable">output_type</span>=<span class="variable">HomeworkOutput</span>,
+)</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

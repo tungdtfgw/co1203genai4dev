@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTS Multi‑Speaker Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">TTS Multi‑Speaker Example</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            <strong>Define a conversation with two speakers:</strong>
+                            Create a multi-speaker conversation prompt with clear speaker names
+                        </li>
+                        <li>
+                            <strong>Configure different voices per speaker:</strong>
+                            Set up individual voice configurations for each speaker
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>tts_multi_speaker.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="keyword">from</span> <span class="variable">google</span> <span class="keyword">import</span> <span class="variable">genai</span>
+<span class="keyword">from</span> <span class="variable">google.genai</span> <span class="keyword">import</span> <span class="variable">types</span>
+<span class="keyword">import</span> <span class="variable">wave</span>
+
+<span class="variable">client</span> <span class="operator">=</span> <span class="function">genai.Client</span>()
+<span class="variable">prompt</span> <span class="operator">=</span> <span class="string">"""TTS the following conversation between Joe and Jane:
+Joe: How's it going today Jane?
+Jane: Not too bad, how about you?"""</span>
+
+<span class="variable">config</span> <span class="operator">=</span> <span class="variable">types</span>.<span class="function">GenerateContentConfig</span>(
+    <span class="variable">response_modalities</span><span class="operator">=</span>[<span class="string">"AUDIO"</span>],
+    <span class="variable">speech_config</span><span class="operator">=</span><span class="variable">types</span>.<span class="function">SpeechConfig</span>(
+        <span class="variable">multi_speaker_voice_config</span><span class="operator">=</span><span class="variable">types</span>.<span class="function">MultiSpeakerVoiceConfig</span>(
+            <span class="variable">speaker_voice_configs</span><span class="operator">=</span>[
+                <span class="variable">types</span>.<span class="function">SpeakerVoiceConfig</span>(
+                    <span class="variable">speaker</span><span class="operator">=</span><span class="string">'Joe'</span>,
+                    <span class="variable">voice_config</span><span class="operator">=</span><span class="variable">types</span>.<span class="function">VoiceConfig</span>(
+                        <span class="variable">prebuilt_voice_config</span><span class="operator">=</span><span class="variable">types</span>.<span class="function">PrebuiltVoiceConfig</span>(<span class="variable">voice_name</span><span class="operator">=</span><span class="string">'Kore'</span>)
+                    )
+                ),
+                <span class="variable">types</span>.<span class="function">SpeakerVoiceConfig</span>(
+                    <span class="variable">speaker</span><span class="operator">=</span><span class="string">'Jane'</span>,
+                    <span class="variable">voice_config</span><span class="operator">=</span><span class="variable">types</span>.<span class="function">VoiceConfig</span>(
+                        <span class="variable">prebuilt_voice_config</span><span class="operator">=</span><span class="variable">types</span>.<span class="function">PrebuiltVoiceConfig</span>(<span class="variable">voice_name</span><span class="operator">=</span><span class="string">'Puck'</span>)
+                    )
+                )
+            ]
+        )
+    )
+)
+<span class="variable">response</span> <span class="operator">=</span> <span class="variable">client</span>.<span class="variable">models</span>.<span class="function">generate_content</span>(
+    <span class="variable">model</span><span class="operator">=</span><span class="string">"gemini-2.5-flash-preview-tts"</span>,
+    <span class="variable">contents</span><span class="operator">=</span><span class="variable">prompt</span>,
+    <span class="variable">config</span><span class="operator">=</span><span class="variable">config</span>
+)
+<span class="variable">audio_data</span> <span class="operator">=</span> <span class="variable">response</span>.<span class="variable">candidates</span>[<span class="number">0</span>].<span class="variable">content</span>.<span class="variable">parts</span>[<span class="number">0</span>].<span class="variable">inline_data</span>.<span class="variable">data</span>
+<span class="keyword">with</span> <span class="function">wave.open</span>(<span class="string">"conversation.wav"</span>, <span class="string">"wb"</span>) <span class="keyword">as</span> <span class="variable">wf</span>:
+    <span class="variable">wf</span>.<span class="function">setnchannels</span>(<span class="number">1</span>)
+    <span class="variable">wf</span>.<span class="function">setsampwidth</span>(<span class="number">2</span>)
+    <span class="variable">wf</span>.<span class="function">setframerate</span>(<span class="number">24000</span>)
+    <span class="variable">wf</span>.<span class="function">writeframes</span>(<span class="variable">audio_data</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

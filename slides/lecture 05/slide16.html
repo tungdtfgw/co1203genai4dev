@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced RAG Techniques</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Advanced RAG Techniques</h1>
+      
+      <ul class="content-list template1-list">
+        <li class="slide-in-left"><strong>Query Transformations:</strong> Re-writing the user's query to be more optimal for retrieval.</li>
+        <li class="slide-in-left" style="animation-delay: 0.2s;"><strong>Advanced Chunking:</strong> Using more intelligent methods to split documents to preserve their meaning.</li>
+        <li class="slide-in-left" style="animation-delay: 0.4s;"><strong>Re-ranking:</strong> Using a secondary, more powerful model to re-rank the initial search results for better relevance before sending them to the LLM.</li>
+        <li class="slide-in-left" style="animation-delay: 0.6s;"><strong>Hybrid Search:</strong> Combining traditional keyword search (like BM25) with semantic vector search to get the best of both worlds.</li>
+      </ul>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

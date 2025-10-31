@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development Tips - Greenwich Presentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Development Tips</h1>
+            
+            <ul class="content-list wide compact template1-list">
+                <li class="slide-in-center">Keep your API key secret – never hard-code it into source control.</li>
+                <li class="slide-in-center" style="animation-delay: 0.2s;">Monitor token usage and set appropriate thinking budgets to control cost.</li>
+                <li class="slide-in-center" style="animation-delay: 0.4s;">Gracefully handle exceptions such as rate limits or network timeouts.</li>
+                <li class="slide-in-center" style="animation-delay: 0.6s;">Summarise or prune long histories to stay within context limits.</li>
+                <li class="slide-in-center" style="animation-delay: 0.8s;">Test with different models and parameters to find the right balance of cost and quality.</li>
+            </ul>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

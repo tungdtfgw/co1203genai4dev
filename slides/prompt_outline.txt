@@ -1,0 +1,75 @@
+Soạn bài giảng số 3 với các nội dung chính sau:
+Buổi 2: Lập trình Gen AI với Gemini API
+- Giới thiệu Gemini API
+- Hỏi đáp stageless
+- Hỏi đáp stateful
+- System prompt
+- Tạo ứng dụng chat text-based với Gemini API
+
+Bài giảng là các slides ở dạng trang web html (sử dụng templates đã upload). Nội dung lấy từ các guide của Google:
+https://ai.google.dev/gemini-api/docs/quickstart
+https://ai.google.dev/gemini-api/docs/api-key
+https://ai.google.dev/gemini-api/docs/models
+https://ai.google.dev/gemini-api/docs/text-generation
+
+Và các file python tôi upload. Lưu ý không cần hiển thị toàn bộ code của các file tutorials, chỉ cần hiển thị các thành phần quan trọng nhất và giải thích.
+
+
+Soạn outline chi tiết bài giảng số 3 với nội dung chính sau:
+Buổi 3: Multimedia trong Gemini API
+- Sinh ảnh (https://ai.google.dev/gemini-api/docs/image-generation)
+- Hiểu nội dung ảnh (https://ai.google.dev/gemini-api/docs/image-understanding)
+- Sinh audio (https://ai.google.dev/gemini-api/docs/speech-generation)
+- Hiểu nội dung audio (https://ai.google.dev/gemini-api/docs/audio)
+- Hỏi đáp theo tài liệu 
+	+) upload tài liệu và hỏi (https://ai.google.dev/gemini-api/docs/document-processing)
+	+) extract text rồi hỏi (sử dụng code mẫu tutorial06.py)
+
+Soạn outline chi tiết bài giảng số 4 với nội dung chính sau:
+Buổi 4: Các khái niệm nâng cao khi lập trình với Gen AI
+- Code Execution (https://ai.google.dev/gemini-api/docs/code-execution)
+- Function Calling (https://ai.google.dev/gemini-api/docs/function-calling?example=weather)
+
+Yêu cầu:
+25-30 slides
+Lý thuyết và thực hành lấy từ doc của Gemini (theo các urls ở trên) hoặc code mẫu tôi cung cấp
+Ngôn ngữ: tiếng Anh
+
+
+Soạn outline chi tiết giới thiệu về RAG (retrieval augmented generation) bằng tiếng Anh với các nội dung từ file rag.txt
+Yêu cầu: khoảng 15 slides, mỗi slides tuân theo 1 trong 2 mẫu dưới đây tùy theo nội dung của slide.
+Định dạng trả lời Markdown theo mẫu sau:
+
+## Slide [number] [Tên slide] 
+### Content 1
+### Content 2
+### Content 3
+
+(Note: 3-6 contents cho slide dạng này, mỗi content gồm 1-3 câu ngắn)
+	
+## Slide [number] [Tên slide] 
+### Content level 1
+#### Content details level 2
+#### Content details level 2
+#### Content details level 2
+		
+### Content level 1
+#### Content details level 2
+#### Content details level 2
+
+(Note: 2-4 content level 1 cho slide dạng này, mỗi level không quá 3 content details, mỗi content details không quá 2 câu ngắn)
+	
+## Slide [number] [Tên slide] 
+### Content level 1
+#### Content details level 2
+#### Content details level 2
+#### Content details level 2
+		
+### Content level 1
+#### Content details level 2
+#### Content details level 2	
+
+### Code minh họa
+[code]
+
+(Note: 2-4 content level 1 cho slide dạng này, mỗi level không quá 3 content details, tất cả content đều liên quan tới code minh họa)

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Captioning Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Image Captioning Example</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            <strong>Provide an inline image and ask for a caption:</strong>
+                            Load image data and send it to Gemini for analysis
+                        </li>
+                        <li>
+                            <strong>Reading the caption result:</strong>
+                            Process the response and display the generated caption
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>image_captioning.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="keyword">from</span> <span class="variable">google</span> <span class="keyword">import</span> <span class="variable">genai</span>
+<span class="keyword">from</span> <span class="variable">google.genai</span> <span class="keyword">import</span> <span class="variable">types</span>
+
+<span class="variable">client</span> <span class="operator">=</span> <span class="function">genai.Client</span>()
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'picture.jpg'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> <span class="variable">f</span>:
+    <span class="variable">image_bytes</span> <span class="operator">=</span> <span class="variable">f</span>.<span class="function">read</span>()
+
+<span class="variable">contents</span> <span class="operator">=</span> [
+    <span class="variable">types</span>.<span class="variable">Part</span>.<span class="function">from_bytes</span>(<span class="variable">data</span><span class="operator">=</span><span class="variable">image_bytes</span>, <span class="variable">mime_type</span><span class="operator">=</span><span class="string">'image/jpeg'</span>),
+    <span class="string">'Caption this image.'</span>
+]
+<span class="variable">response</span> <span class="operator">=</span> <span class="variable">client</span>.<span class="variable">models</span>.<span class="function">generate_content</span>(
+    <span class="variable">model</span><span class="operator">=</span><span class="string">'gemini-2.5-flash'</span>,
+    <span class="variable">contents</span><span class="operator">=</span><span class="variable">contents</span>
+)
+<span class="function">print</span>(<span class="variable">response</span>.<span class="variable">text</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

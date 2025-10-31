@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Example: A Simple Calculation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Code Example: A Simple Calculation</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            This example shows how to enable the Code Execution tool for a simple prompt.
+                        </li>
+                        <li>
+                            We will ask the model to calculate the area of a circle.
+                        </li>
+                        <li>
+                            Notice that we simply enable the tool; the model decides how and when to use it.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>code_execution_example.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block"><span class="keyword">import</span> <span class="variable">google.generativeai</span> <span class="keyword">as</span> <span class="variable">genai</span>
+
+<span class="comment"># Configure with your API key</span>
+<span class="comment"># genai.configure(api_key="YOUR_API_KEY")</span>
+
+<span class="comment"># Enable the Code Execution tool</span>
+<span class="variable">code_execution_tool</span> <span class="operator">=</span> <span class="variable">genai</span>.<span class="function">Tool</span>(
+    <span class="variable">code_execution</span><span class="operator">=</span><span class="variable">genai</span>.<span class="function">CodeExecution</span>()
+)
+
+<span class="variable">model</span> <span class="operator">=</span> <span class="variable">genai</span>.<span class="function">GenerativeModel</span>(
+    <span class="string">'gemini-1.5-pro-latest'</span>,
+    <span class="variable">tools</span><span class="operator">=</span>[<span class="variable">code_execution_tool</span>]
+)
+
+<span class="comment"># Start a chat session</span>
+<span class="variable">chat</span> <span class="operator">=</span> <span class="variable">model</span>.<span class="function">start_chat</span>()
+
+<span class="variable">prompt</span> <span class="operator">=</span> <span class="string">"What is the area of a circle with a radius of 12.34 inches? Use π = 3.14159."</span>
+<span class="variable">response</span> <span class="operator">=</span> <span class="variable">chat</span>.<span class="function">send_message</span>(<span class="variable">prompt</span>)
+
+<span class="function">print</span>(<span class="variable">response</span>.<span class="variable">text</span>)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>

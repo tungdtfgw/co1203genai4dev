@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 4: The Embedding Process</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Step 4: The Embedding Process</h1>
+      <div class="two-panel">
+        <div class="panel panel-text slide-in-left">
+          
+          <ul class="content-list template2-list">
+            <li>This script is the core of the offline processing pipeline.</li>
+            <li>It iterates through documents, chunks the text, and then encodes these chunks into vectors.</li>
+          
+            <li><strong>1. <code>extract_text_from_file</code>:</strong> Calls the function from the previous slide to get the full text from the file.</li>
+            <li><strong>2. <code>text_splitter.split_text</code>:</strong> Uses the configured splitter object to divide the text into a list of chunks.</li>
+            <li><strong>3. <code>model.encode</code>:</strong> The <code>bge-m3</code> model converts the list of text chunks into a NumPy array of vector embeddings.</li>
+          </ul>
+        </div>
+        <div class="panel slide-in-right">
+          <div class="code-panel">
+            <h3 class="code-title">Code Snippet & Explanation</h3>
+            <pre class="code-content">
+<span class="comment"># create_embeddings.py</span>
+<span class="variable">model</span> <span class="operator">=</span> <span class="function">SentenceTransformer</span><span class="operator">(</span><span class="string">'BAAI/bge-m3'</span><span class="operator">)</span>
+<span class="variable">doc_dir</span> <span class="operator">=</span> <span class="string">'docs'</span>
+
+<span class="keyword">for</span> <span class="variable">file_name</span> <span class="keyword">in</span> <span class="variable">os</span><span class="operator">.</span><span class="function">listdir</span><span class="operator">(</span><span class="variable">doc_dir</span><span class="operator">)</span><span class="operator">:</span>
+    <span class="variable">file_path</span> <span class="operator">=</span> <span class="variable">os</span><span class="operator">.</span><span class="variable">path</span><span class="operator">.</span><span class="function">join</span><span class="operator">(</span><span class="variable">doc_dir</span><span class="operator">,</span> <span class="variable">file_name</span><span class="operator">)</span>
+    
+    <span class="comment"># 1. Extract text (using the created module)</span>
+    <span class="variable">text</span> <span class="operator">=</span> <span class="function">extract_text_from_file</span><span class="operator">(</span><span class="variable">file_path</span><span class="operator">)</span>
+    
+    <span class="comment"># 2. Split text into chunks</span>
+    <span class="variable">chunks</span> <span class="operator">=</span> <span class="variable">text_splitter</span><span class="operator">.</span><span class="function">split_text</span><span class="operator">(</span><span class="variable">text</span><span class="operator">)</span>
+    
+    <span class="comment"># 3. Encode chunks into vector embeddings</span>
+    <span class="variable">embeddings</span> <span class="operator">=</span> <span class="variable">model</span><span class="operator">.</span><span class="function">encode</span><span class="operator">(</span>
+        <span class="variable">chunks</span><span class="operator">,</span> 
+        <span class="keyword">show_progress_bar</span><span class="operator">=</span><span class="keyword">True</span><span class="operator">,</span> 
+        <span class="keyword">batch_size</span><span class="operator">=</span><span class="number">32</span>
+    <span class="operator">)</span>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

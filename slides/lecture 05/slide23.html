@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 2: Text Extraction</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Step 2: Text Extraction</h1>
+      <div class="two-panel">
+        <div class="panel panel-text slide-in-left">
+          <!-- <div class="content-intro">
+            <p class="intro-text"><strong>Code Deep Dive:</strong> <code>extract_text.py</code></p>
+          </div> -->
+          <ul class="content-list template2-list">
+            <li>The script uses dedicated functions to read text from different file types.</li>
+            <li>It intelligently routes the file to the correct function based on its extension.</li>
+            <li><strong>Explanation:</strong> Each function opens a specific file type, iterates through its components (pages or paragraphs), extracts the text, and concatenates it into a single string.</li>
+          </ul>
+        </div>
+        <div class="panel slide-in-right">
+          <div class="code-panel">
+            <h3 class="code-title">Code Snippet & Explanation</h3>
+            <pre class="code-content">
+<span class="comment"># extract_text.py</span>
+<span class="keyword">from</span> PyPDF2 <span class="keyword">import</span> PdfReader
+<span class="keyword">from</span> docx <span class="keyword">import</span> Document
+
+<span class="keyword">def</span> <span class="function">extract_text_from_pdf</span><span class="operator">(</span><span class="variable">file_path</span><span class="operator">)</span><span class="operator">:</span>
+    <span class="comment"># Open the PDF file and read each page</span>
+    <span class="variable">reader</span> <span class="operator">=</span> <span class="function">PdfReader</span><span class="operator">(</span><span class="variable">file_path</span><span class="operator">)</span>
+    <span class="variable">text</span> <span class="operator">=</span> <span class="string">""</span>
+    <span class="keyword">for</span> <span class="variable">page</span> <span class="keyword">in</span> <span class="variable">reader</span><span class="operator">.</span><span class="variable">pages</span><span class="operator">:</span>
+        <span class="variable">text</span> <span class="operator">+=</span> <span class="variable">page</span><span class="operator">.</span><span class="function">extract_text</span><span class="operator">()</span> <span class="keyword">or</span> <span class="string">""</span>
+    <span class="keyword">return</span> <span class="variable">text</span>
+
+<span class="keyword">def</span> <span class="function">extract_text_from_docx</span><span class="operator">(</span><span class="variable">file_path</span><span class="operator">)</span><span class="operator">:</span>
+    <span class="comment"># Open the DOCX file and read each paragraph</span>
+    <span class="variable">doc</span> <span class="operator">=</span> <span class="function">Document</span><span class="operator">(</span><span class="variable">file_path</span><span class="operator">)</span>
+    <span class="variable">text</span> <span class="operator">=</span> <span class="string">""</span>
+    <span class="keyword">for</span> <span class="variable">para</span> <span class="keyword">in</span> <span class="variable">doc</span><span class="operator">.</span><span class="variable">paragraphs</span><span class="operator">:</span>
+        <span class="variable">text</span> <span class="operator">+=</span> <span class="variable">para</span><span class="operator">.</span><span class="variable">text</span> <span class="operator">+</span> <span class="string">"\n"</span>
+    <span class="keyword">return</span> <span class="variable">text</span>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

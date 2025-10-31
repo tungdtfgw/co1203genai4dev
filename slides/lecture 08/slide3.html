@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 6 - Core Components of an AI Agent</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">Core Components of an AI Agent</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template2-list">
+                        <li>
+                            <strong>The Model (The Brain):</strong> The model is the central component for planning, predicting, and selecting actions. It is typically a Large Language Model (LLM) with capabilities for reasoning, planning, and tool selection.
+                        </li>
+                        <li>
+                            <strong>The Tools (The Hands):</strong> Tools extend the agent's capabilities, allowing it to interact with external data and services. This includes Function Calling, where the LLM decides when to use a function, and Data Store augmentation (like RAG) to overcome static knowledge limitations.
+                        </li>
+                        <li>
+                            <strong>The Memory (The Experience):</strong> Memory enables the agent to learn from past interactions and maintain context across conversations. This includes both short-term memory for current tasks and long-term memory for persistent learning.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <img src="images/agent-components.webp" alt="AI Agent Components" class="panel-image">
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Manager: Defining Tools (@server.list_tools)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">File Manager: Defining Tools (`@server.list_tools`)</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li>
+                            This function returns a list of `Tool` objects.
+                        </li>
+                        <li>
+                            Each `Tool` tells the AI client what it can do, what inputs it needs, and what the purpose of the tool is.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="panel slide-in-right">
+                    <div class="code-panel">
+                        <div class="code-header">
+                            <span>file_manager_server.py</span>
+                            <span class="code-language">Python</span>
+                        </div>
+                        <pre class="code-content" id="code-block" style="max-height: 320px;"><span class="comment"># From file_manager_server.py</span>
+
+<span class="keyword">@server.list_tools()</span>
+<span class="keyword">async def</span> <span class="function">list_tools</span>() <span class="operator">-></span> <span class="variable">list</span>[<span class="variable">Tool</span>]:
+    <span class="keyword">return</span> [
+        <span class="function">Tool</span>(
+            <span class="keyword">name</span><span class="operator">=</span><span class="string">"read_file"</span>,
+            <span class="keyword">description</span><span class="operator">=</span><span class="string">"Read file content"</span>,
+            <span class="keyword">inputSchema</span><span class="operator">=</span>{
+                <span class="string">"type"</span>: <span class="string">"object"</span>,
+                <span class="string">"properties"</span>: { <span class="string">"path"</span>: { <span class="string">"type"</span>: <span class="string">"string"</span> } },
+                <span class="string">"required"</span>: [<span class="string">"path"</span>]
+            }
+        ),
+        <span class="function">Tool</span>(
+            <span class="keyword">name</span><span class="operator">=</span><span class="string">"write_file"</span>,
+            <span class="keyword">description</span><span class="operator">=</span><span class="string">"Write content to file"</span>,
+            <span class="keyword">inputSchema</span><span class="operator">=</span>{
+                <span class="string">"type"</span>: <span class="string">"object"</span>,
+                <span class="string">"properties"</span>: {
+                    <span class="string">"path"</span>: { <span class="string">"type"</span>: <span class="string">"string"</span> },
+                    <span class="string">"content"</span>: { <span class="string">"type"</span>: <span class="string">"string"</span> }
+                },
+                <span class="string">"required"</span>: [<span class="string">"path"</span>, <span class="string">"content"</span>]
+            }
+        ),
+        <span class="comment"># ... other tools like list_files ...</span>
+    ]</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+    <script>
+        // Add code animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const codePanel = document.querySelector('.code-panel');
+            if (codePanel) {
+                codePanel.style.opacity = '0';
+                codePanel.style.transform = 'translateX(30px)';
+                setTimeout(() => {
+                    codePanel.style.transition = 'all 0.8s ease-out';
+                    codePanel.style.opacity = '1';
+                    codePanel.style.transform = 'translateX(0)';
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>
+
+

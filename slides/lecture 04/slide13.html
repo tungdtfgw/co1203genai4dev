@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is Function Calling?</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slide fade-in">
+        <div class="slide-header">
+        </div>
+        
+        <div class="slide-content">
+            <h1 class="slide-title">What is Function Calling?</h1>
+            
+            <div class="two-panel">
+                <div class="panel panel-text slide-in-left">
+                    <ul class="content-list template5-list">
+                        <li class="slide-in-center">
+                            A mechanism for the model to request a specific action from your application.
+                            You define a set of available functions (tools) that the model can use.
+                        </li>
+                        <li class="slide-in-center" style="animation-delay: 0.3s;">
+                            When the model needs one, it outputs a FunctionCall object.
+                            This includes the function's name and the arguments it should be called with.
+                        </li>
+                        <li class="slide-in-center" style="animation-delay: 0.5s;">
+                            It follows a request/response pattern.
+                            Your code executes the function and sends the result back to the model, which then continues the conversation.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="slide-in-right">
+                    <img src="images/function-calling.webp" alt="Function Calling Mechanism" class="slide-image">
+                    <div class="image-caption">Function calling workflow</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="previousSlide()">◀ Prev</button>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-text">
+                    All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="presentation.js"></script>
+</body>
+</html>

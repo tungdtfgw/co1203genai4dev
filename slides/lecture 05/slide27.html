@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Deep Dive: Semantic Search</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">Step 6: The Retrieval Logic</h1>
+      <div class="two-panel">
+        <div class="panel panel-text slide-in-left">
+          
+          <ul class="content-list template2-list">
+            <li>This function is the heart of the retrieval system.</li>
+            <li>It searches across all document indices and returns the top <code>k</code> most relevant chunks overall.</li>
+          
+            <li><strong>1. <code>model.encode</code>:</strong> Converts the query into a vector.</li>
+            <li><strong>2. Loop:</strong> Searches through each indexed document file one by one.</li>
+            <li><strong>3. <code>index.search</code>:</strong> The core FAISS function, which returns the distances and indices of the nearest vectors.</li>
+            <li><strong>4. Sort:</strong> Aggregates results from all files, sorts them by distance (smaller is better), and returns the content of the best chunks.</li>
+          </ul>
+        </div>
+        <div class="panel slide-in-right">
+          <div class="code-panel">
+            <h3 class="code-title">Code Snippet & Explanation</h3>
+            <pre class="code-content">
+<span class="comment"># From README.md, part of VectorSearchManager</span>
+<span class="keyword">def</span> <span class="function">search</span>(<span class="variable">self</span>, query, k=<span class="number">5</span>):
+    <span class="comment"># 1. Encode the user's query</span>
+    query_embedding = <span class="variable">self</span>.model.<span class="function">encode</span>([query])
+    
+    all_results = []
+    <span class="comment"># 2. Iterate through all loaded indices</span>
+    <span class="keyword">for</span> key, index <span class="keyword">in</span> <span class="variable">self</span>.indices.<span class="function">items</span>():
+        <span class="comment"># 3. Search within the current index</span>
+        distances, indices_found = index.<span class="function">search</span>(query_embedding, k=k)
+        
+        <span class="keyword">for</span> distance, idx <span class="keyword">in</span> <span class="function">zip</span>(distances[<span class="number">0</span>], indices_found[<span class="number">0</span>]):
+            <span class="comment"># Get the corresponding chunk and add it to the results</span>
+            all_results.<span class="function">append</span>((distance, <span class="variable">self</span>.chunks_dict[key][idx]))
+    
+    <span class="comment"># 4. Sort all results and return the top K</span>
+    all_results.<span class="function">sort</span>(key=<span class="keyword">lambda</span> x: x[<span class="number">0</span>])
+    <span class="keyword">return</span> [chunk <span class="keyword">for</span> _, chunk <span class="keyword">in</span> all_results[:k]]
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>

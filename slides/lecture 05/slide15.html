@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The RAG Technology Stack</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="slide fade-in">
+    <div class="slide-header"></div>
+    <div class="slide-content">
+      <h1 class="slide-title">The RAG Technology Stack</h1>
+      <div class="two-panel">
+        <div class="panel panel-text slide-in-left">
+          <ul class="content-list template2-list">
+            <li class="slide-in-center">
+              <strong>Embedding Models</strong><br>
+              Convert text into numerical vectors for semantic similarity search. Examples: OpenAI embeddings, Cohere embeddings, Sentence Transformers from Hugging Face.
+            </li>
+            <li class="slide-in-center" style="animation-delay: 0.2s;">
+              <strong>Vector Databases</strong><br>
+              Store and efficiently search through high-dimensional embeddings. Examples: Pinecone, Chroma, FAISS, Weaviate, Qdrant.
+            </li>
+            <li class="slide-in-center" style="animation-delay: 0.4s;">
+              <strong>Orchestration Frameworks</strong><br>
+              High-level tools that coordinate the entire RAG pipeline. Examples: LangChain, LlamaIndex, Haystack.
+            </li>
+            <li class="slide-in-center" style="animation-delay: 0.6s;">
+              <strong>Foundation Models</strong><br>
+              Large language models that generate responses based on retrieved context. Examples: GPT-4, Claude, Gemini, Llama.
+            </li>
+          </ul>
+        </div>
+        <div class="panel slide-in-right">
+          <img src="images/rag_stacks.png" alt="RAG Technology Stack" class="panel-image">
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div class="footer-nav"><button class="nav-btn" onclick="previousSlide()">◀ Prev</button></div>
+      <div class="footer-center"><div class="footer-text">All these resources belong to FPT Greenwich. Any unauthorized copying, alteration, distribution outside our organization is strictly prohibited</div></div>
+      <div class="footer-nav"><button class="nav-btn" onclick="nextSlide()">Next ▶</button></div>
+    </div>
+  </div>
+  <script src="presentation.js"></script>
+</body>
+</html>
