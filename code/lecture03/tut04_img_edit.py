@@ -15,21 +15,6 @@ from utils import get_key
 
 from tkinter import messagebox
 
-from google import genai
-from google.genai import types
-from PIL import Image
-from io import BytesIO
-import tkinter as tk
-from tkinter import ttk
-from PIL import ImageTk
-import os
-import sys
-
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from utils import get_key
-
-from tkinter import messagebox
-
 # This application allows users to input a text prompt and generates an image using the Gemini API.
 # The generated image is displayed in the GUI and saved locally as 'gemini-native-image.png'.
 
