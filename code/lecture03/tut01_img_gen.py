@@ -81,8 +81,9 @@ class ImageGeneratorApp:
                         
                         # Save image
                         image.save('gemini-native-image.png')
-            except Exception:
+            except Exception as e:
                 messagebox.showerror('Error creating image')
+                print(f"Error: {e}")
             finally:
                 self.generate_btn.config(state='normal')
         
