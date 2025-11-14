@@ -18,6 +18,8 @@ def display_code_execution_result(response):
     if not has_code_execution:
         return  # Don't print anything if no code execution
     
+    print('Code Execution called:')
+    
     for part in response.candidates[0].content.parts:
         if part.executable_code is not None:
             print("\nCode:")
@@ -39,10 +41,10 @@ def init_chat():
             )])
     chat = client.chats.create(model='gemini-2.0-flash', config=code_config)
     
-    return chat
+    return client, chat
 
 def main():
-    chat = init_chat()
+    client, chat = init_chat()
     while True:
         question = input('[User]: ')
         
